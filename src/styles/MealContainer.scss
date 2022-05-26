@@ -1,0 +1,79 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.meal-box-light {
+  background-color: white;
+}
+
+.meal-box-dark {
+  background-color: #f0f0f0;
+}
+
+.meal-box {
+  border: 1px solid #f0f0f0;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+
+  .meal-data-container {
+      flex: 1;
+  }
+
+  .meal-info {
+    width: 160px;
+  }
+
+  .meal-macros {
+    flex: 1;
+    margin-right: 3rem;
+  }
+
+  .meal-btn {
+    margin: auto 0;
+
+    .btn {
+      width: 2.25rem;
+      height: 2.25rem;
+      line-height: 1;
+      padding: 0;
+      text-align: center;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .meal-box {
+    .meal-info {
+      width: 100px;
+      h4 {
+        font-size: 1rem;
+      }
+
+      .meal-kcal,
+      .meal-weight {
+        font-size: 0.8rem;
+      }
+    }
+
+    .meal-macros {
+      margin-right: 0;
+      font-size: 0.8rem;
+
+      .col {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+      }
+    }
+
+    .meal-btn {
+      .btn {
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 0.75rem;
+      }
+    }
+  }
+}

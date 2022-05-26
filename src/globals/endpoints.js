@@ -1,0 +1,14 @@
+const ENDPOINTS = {
+  GOALS_URL: "/goals-entries/",
+  DIARY_ENTRIES_URL: "/diary-entries/",
+  CHANGE_PASSWORD_URL: "/auth/password/change/",
+  PRODUCTS_URL: "/products/",
+  LOGIN_URL: "/auth/login/",
+  REFRESH_URL: "/auth/token/refresh/",
+  REGISTER_URL: "/auth/registration/",
+  RESET_PASSWORD_REQUEST_URL: "/auth/password/reset/",
+  RESET_PASSWORD_URL: "/auth/password/reset/confirm/",
+  VERIFY_EMAIL_URL: "/auth/verify-email/",
+};
+
+export default ENDPOINTS;

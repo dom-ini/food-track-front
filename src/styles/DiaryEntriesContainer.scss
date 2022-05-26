@@ -1,0 +1,19 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.diary-entries-container {
+  overflow: auto;
+  
+  .macros-labels {
+    margin: 0 6rem 0.5rem 160px;
+
+    @include media-breakpoint-down(sm) {
+      margin: 0 2.25rem 0.5rem 100px;
+      .col {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+      }
+    }
+  }
+}

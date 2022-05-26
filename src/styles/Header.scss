@@ -1,0 +1,46 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.navbar-logo {
+  width: 150px;
+
+  @include media-breakpoint-down(md) {
+    width: 125px;
+  }
+}
+
+nav #navbar-nav .navbar-nav .nav-link {
+  color: var(--bs-body-color);
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+}
+
+@include media-breakpoint-down(lg) {
+  .navbar-nav > .nav-item > a.dropdown-toggle {
+    display: none;
+  }
+  .navbar-nav .nav-item.dropdown {
+    display: flex;
+    justify-content: flex-end;
+
+    .dropdown-item {
+      justify-content: end;
+      padding-right: 0;
+    }
+  }
+  .navbar-nav .dropdown-menu {
+    display: block;
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}

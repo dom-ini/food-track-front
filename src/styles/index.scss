@@ -1,0 +1,82 @@
+@import "./utils/slider.scss";
+@import "./utils/slideUp.scss";
+@import "./utils/fade.scss";
+@import "./utils/variables.scss";
+
+$theme-colors: (
+  "primary": $color-primary,
+  "danger": $color-danger,
+  "warning": $color-warning,
+  "green": $color-green,
+  "blue": $color-blue,
+  "orange": $color-orange,
+  "brown": $color-brown,
+);
+
+$input-focus-border-color: #1d6531;
+$input-focus-box-shadow: 0 0 0 0.25rem rgba(69, 145, 90, 0.25);
+$dropdown-link-active-bg: $color-primary;
+
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  font-family: "Kanit", sans-serif;
+  background-image: url("../assets/img/background.jpg");
+  background-size: 50vw;
+  min-height: 100vh;
+}
+
+a.link-primary {
+  color: $color-primary;
+  text-decoration: none;
+  transition: all 0.25s ease;
+
+  &:hover {
+    color: darken($color-primary, 10%);
+  }
+}
+
+.btn:not(.btn-danger):focus {
+  box-shadow: 0 0 0 0.25rem rgba(69, 145, 90, 0.5);
+}
+
+.btn-danger, .btn-danger:hover, .btn-danger:focus {
+  color: white;
+}
+
+.btn-link, .btn-link:hover, .btn-link:focus {
+  color: var(--bs-body-color);
+}
+
+.form-medium {
+  max-width: 300px;
+}
+
+.form-wide {
+  max-width: 400px;
+}
+
+.title-divider {
+  border-bottom: 1px solid $color-primary;
+}
+
+h1.title-divider {
+  padding-bottom: 1rem;
+}
+
+.invalid-feedback {
+  font-size: 80%;
+}
+
+.global-alert {
+  position: fixed;
+  bottom: 20px;
+  width: 50%;
+  left: 25%;
+  z-index: 1100;
+
+  @include media-breakpoint-down(md) {
+    width: 90%;
+    left: 5%;
+  }
+}

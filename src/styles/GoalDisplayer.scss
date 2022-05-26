@@ -1,0 +1,80 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "./utils/variables.scss";
+
+.macros-name {
+  text-align: center;
+}
+
+.macros-numbers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 0.25rem;
+}
+
+.macros-name {
+  display: block;
+}
+
+.macros-eaten {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.macros-goal {
+  font-size: 0.85rem;
+  color: gray;
+  white-space: pre;
+}
+
+.progress[class^="progress-exceed-"] {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+$colors: (
+  "green": $color-green,
+  "orange": $color-orange,
+  "blue": $color-blue,
+  "brown": $color-brown,
+);
+
+@each $name, $color in $colors {
+  .progress.progress-exceed-#{$name} {
+    background-color: $color;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  div.progress {
+    height: 10px;
+  }
+
+  .macros-name {
+    font-size: 0.85rem;
+  }
+
+  .macros-numbers {
+    flex-direction: column;
+  }
+
+  .macros-eaten {
+    font-size: 1rem;
+  }
+
+  .macros-goal {
+    font-size: 0.75rem;
+  }
+}
