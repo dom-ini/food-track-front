@@ -33,7 +33,7 @@ const GoalDisplayer = ({
   return (
     <div className={className}>
       <span className="macros-name">{label}</span>
-      <div className="macros-numbers">
+      <div className={`macros-numbers ${goal === undefined ? "" : "goals-set"}`}>
         <span className="macros-eaten">
           {roundEaten ? eaten.toFixed(0) : eaten.toFixed(1)}
         </span>
