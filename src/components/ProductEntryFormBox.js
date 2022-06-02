@@ -86,7 +86,7 @@ const ProductEntryFormBox = ({
             <Row className="pb-3 d-flex justify-content-center">
               <Col xs={6} sm={4} md={3}>
                 <GoalFormField
-                  label="Waga produktu (g)"
+                  label="Waga (g)"
                   suffix="g"
                   name="weight"
                   placeholder="Waga"
@@ -104,8 +104,8 @@ const ProductEntryFormBox = ({
                 </Button>
               </Col>
             </Row>
-            <Row>
-              <Col>
+            <Row className="gy-3">
+              <Col xs={12} sm={6} lg={3}>
                 <ProductEntryFormCalculatedField
                   label="kcal"
                   suffix="kcal"
@@ -114,7 +114,7 @@ const ProductEntryFormBox = ({
                   macroIn100={product.kcal_for_100}
                 />
               </Col>
-              <Col>
+              <Col xs={12} sm={6} lg={3}>
                 <ProductEntryFormCalculatedField
                   label="Białko (g)"
                   suffix="g"
@@ -123,7 +123,7 @@ const ProductEntryFormBox = ({
                   macroIn100={product.protein_for_100}
                 />
               </Col>
-              <Col>
+              <Col xs={12} sm={6} lg={3}>
                 <ProductEntryFormCalculatedField
                   label="Węglowodany (g)"
                   suffix="g"
@@ -132,7 +132,7 @@ const ProductEntryFormBox = ({
                   macroIn100={product.carbo_for_100}
                 />
               </Col>
-              <Col>
+              <Col xs={12} sm={6} lg={3}>
                 <ProductEntryFormCalculatedField
                   label="Tłuszcze (g)"
                   suffix="g"
