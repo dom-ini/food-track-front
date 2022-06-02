@@ -1,13 +1,24 @@
+import { useEffect, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaPowerOff, FaWrench, FaBullseye, FaPlus } from "react-icons/fa";
 
+import useWindowSize from "../hooks/useWindowSize";
 import useAuth from "../hooks/useAuth";
 import Logo from "./Logo";
 import "../styles/Header.scss";
 
+const LARGE_SCREEN_BREAKPOINT = 991;
+
 const Header = () => {
+  const [show, setShow] = useState(false);
   const { logout } = useAuth();
+  const { width } = useWindowSize();
+
+  useEffect(() => {
+    const isBigScreen = width > LARGE_SCREEN_BREAKPOINT;
+    setShow(!isBigScreen);
+  }, [width]);
 
   return (
     <Navbar expand="lg" bg="white" className="shadow-sm">
@@ -20,7 +31,12 @@ const Header = () => {
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav" className="justify-content-end">
           <Nav>
-            <NavDropdown title="Moje konto">
+            <NavDropdown
+              title="Moje konto"
+              show={show}
+              onClick={() => setShow((prev) => !prev)}
+              align="end"
+            >
               <NavDropdown.Item as={Link} to="/konto">
                 <FaWrench className="d-none d-lg-block" />
                 <span className="ms-2">Ustawienia konta</span>
