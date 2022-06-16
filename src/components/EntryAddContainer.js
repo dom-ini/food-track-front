@@ -40,13 +40,14 @@ const EntryAddContainer = ({ date, meal, closeModal, setDiaryEntries }) => {
           ]
         );
         setNext(response.data.next);
+        setIsLoading(false);
         return products;
       } catch (err) {
-        if (err.name !== "CanceledError")
+        if (err.name !== "CanceledError") {
+          setIsLoading(false);
           alert.danger("Wystąpił błąd, spróbuj ponownie później");
+        }
         return [];
-      } finally {
-        setIsLoading(false);
       }
     },
     [axiosPrivate, search]
@@ -115,7 +116,7 @@ const EntryAddContainer = ({ date, meal, closeModal, setDiaryEntries }) => {
       ) : (
         <p className="text-center mt-3">Nie znaleziono produktów :C</p>
       )}
-      {next && (
+      {next && !isLoading && (
         <Button
           className="d-block mx-auto mt-3"
           disabled={isLoading}
