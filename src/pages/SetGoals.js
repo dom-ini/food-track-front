@@ -6,8 +6,8 @@ import { Form, Button, Row, Col, Spinner } from "react-bootstrap";
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useFormErrorHandler from "../hooks/useFormErrorHandler";
-import GoalFormField from "./GoalFormField";
-import GoalCalculatedField from "./GoalCalculatedField";
+import MacroFormField from "../components/MacroFormField";
+import GoalCalculatedField from "../components/GoalCalculatedField";
 import { MACRO_TO_KCAL } from "../globals/utils";
 import ENDPOINTS from "../globals/endpoints";
 import useAlert from "../hooks/useAlert";
@@ -50,7 +50,7 @@ const validationSchema = object().shape({
   carb_perc: BASE_MACRO_VALIDATION,
 });
 
-const GoalsSet = () => {
+const SetGoals = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [initialValues, setInitialValues] = useState(
     JSON.parse(JSON.stringify(EMPTY_GOALS))
@@ -162,7 +162,7 @@ const GoalsSet = () => {
                     xs={6}
                     sm={5}
                   >
-                    <GoalFormField
+                    <MacroFormField
                       label="Zapotrzebowanie"
                       suffix="kcal"
                       name="daily_kcal_goal"
@@ -181,7 +181,7 @@ const GoalsSet = () => {
                 <Row className="justify-content-around">
                   <Col xs={6} sm={5}>
                     <Form.Group controlId="formProteinPerc" className="mb-2">
-                      <GoalFormField
+                      <MacroFormField
                         label="Białko (%)"
                         suffix="%"
                         name="protein_perc"
@@ -210,7 +210,7 @@ const GoalsSet = () => {
                 <Row className="justify-content-around">
                   <Col xs={6} sm={5}>
                     <Form.Group controlId="formFatPerc" className="mb-2">
-                      <GoalFormField
+                      <MacroFormField
                         label="Tłuszcze (%)"
                         suffix="%"
                         name="fat_perc"
@@ -239,7 +239,7 @@ const GoalsSet = () => {
                 <Row className="justify-content-around">
                   <Col xs={6} sm={5}>
                     <Form.Group controlId="formCarbPerc" className="mb-2">
-                      <GoalFormField
+                      <MacroFormField
                         label="Węglowodany (%)"
                         suffix="%"
                         name="carb_perc"
@@ -290,4 +290,4 @@ const GoalsSet = () => {
   );
 };
 
-export default GoalsSet;
+export default SetGoals;

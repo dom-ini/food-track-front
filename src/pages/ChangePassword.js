@@ -2,7 +2,7 @@ import { Button, Form } from "react-bootstrap";
 import { Formik } from "formik";
 import { object, string, ref } from "yup";
 
-import PasswordRequirementsInput from "./PasswordRequirementsInput";
+import PasswordRequirementsInput from "../components/PasswordRequirementsInput";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useFormErrorHandler from "../hooks/useFormErrorHandler";
 import REGEX from "../globals/regex";
@@ -23,7 +23,7 @@ const validationSchema = object().shape({
     .oneOf([ref("new_password1"), null], "Hasła nie są takie same"),
 });
 
-const PasswordChange = () => {
+const ChangePassword = () => {
   const axiosPrivate = useAxiosPrivate();
   const setFormErrors = useFormErrorHandler();
   const alert = useAlert();
@@ -133,4 +133,4 @@ const PasswordChange = () => {
   );
 };
 
-export default PasswordChange;
+export default ChangePassword;

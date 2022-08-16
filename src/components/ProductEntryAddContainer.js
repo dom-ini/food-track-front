@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Row, Col, Spinner, Button } from "react-bootstrap";
-import ProductEntryContainer from "./ProductEntryContainer";
+import ProductEntryFormContainer from "./ProductEntryFormContainer";
 
 import ProductSearch from "./ProductSearch";
 import useAlert from "../hooks/useAlert";
@@ -11,7 +11,7 @@ import "../styles/EntryAddContainer.scss";
 
 const SMALL_SCREEN_BREAKPOINT = 575;
 
-const EntryAddContainer = ({ date, meal, closeModal, setDiaryEntries }) => {
+const ProductEntryAddContainer = ({ date, meal, closeModal, setDiaryEntries }) => {
   const [products, setProducts] = useState([]);
   const [next, setNext] = useState(null);
   const [search, setSearch] = useState("");
@@ -100,7 +100,7 @@ const EntryAddContainer = ({ date, meal, closeModal, setDiaryEntries }) => {
       </div>
       {products?.length ? (
         products.map((product, i) => (
-          <ProductEntryContainer
+          <ProductEntryFormContainer
             product={product}
             date={date}
             meal={meal}
@@ -130,4 +130,4 @@ const EntryAddContainer = ({ date, meal, closeModal, setDiaryEntries }) => {
   );
 };
 
-export default EntryAddContainer;
+export default ProductEntryAddContainer;

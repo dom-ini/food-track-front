@@ -7,8 +7,7 @@ import GoalsContainer from "./GoalsContainer";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 import ENDPOINTS from "../globals/endpoints";
-import EntryAddModal from "./EntryAddModal";
-import "../styles/DiaryContainer.scss";
+import ProductEntryAddModal from "./ProductEntryAddModal";
 
 const ENTRIES_BY_MEAL_TEMPLATE = {
   0: [],
@@ -27,6 +26,8 @@ const MACROS_BY_MEAL_TEMPLATE = {
 };
 
 const MACROS_EATEN_TEMPLATE = { kcal: 0, protein: 0, fat: 0, carb: 0 };
+
+// jedna funkcja do tworzenia obiektu z template
 
 const getEmptyEntriesByMeal = () => {
   return JSON.parse(JSON.stringify(ENTRIES_BY_MEAL_TEMPLATE));
@@ -178,7 +179,7 @@ const DiaryContainer = () => {
   };
 
   return (
-    <div className="diary-container mx-auto">
+    <div>
       <DiaryDatePicker
         selectedDay={selectedDay}
         setSelectedDay={setSelectedDay}
@@ -191,7 +192,7 @@ const DiaryContainer = () => {
         openModal={openModalAndSelectMeal}
       />
       <GoalsContainer date={selectedDay} macrosEaten={macrosEaten} />
-      <EntryAddModal
+      <ProductEntryAddModal
         isModalVisible={isModalVisible}
         date={selectedDay}
         meal={selectedMeal}

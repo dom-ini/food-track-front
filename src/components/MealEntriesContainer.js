@@ -2,9 +2,9 @@ import { Button } from "react-bootstrap";
 import { GoPlus, GoDash } from "react-icons/go";
 
 import "../styles/MealContainer.scss";
-import MealBox from "./MealBox";
+import MealEntry from "./MealEntry";
 
-const MealContainer = ({
+const MealEntriesContainer = ({
   mealName,
   mealId,
   mealEntries,
@@ -14,7 +14,7 @@ const MealContainer = ({
 }) => {
   return (
     <div className="meal-container">
-      <MealBox
+      <MealEntry
         className="shadow-sm"
         name={mealName}
         data={mealMacros}
@@ -30,7 +30,7 @@ const MealContainer = ({
         }
       />
       {mealEntries.map((entry, i) => (
-        <MealBox
+        <MealEntry
           key={i}
           className=""
           name={entry.name}
@@ -51,4 +51,4 @@ const MealContainer = ({
   );
 };
 
-export default MealContainer;
+export default MealEntriesContainer;

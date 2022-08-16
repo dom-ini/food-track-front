@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { Formik } from "formik";
 import { object, string, ref } from "yup";
 
-import PasswordRequirementsInput from "./PasswordRequirementsInput";
+import PasswordRequirementsInput from "../components/PasswordRequirementsInput";
 import useAuth from "../hooks/useAuth";
 import useFormErrorHandler from "../hooks/useFormErrorHandler";
 import REGEX from "../globals/regex";
@@ -20,7 +20,7 @@ const validationSchema = object().shape({
     .oneOf([ref("new_password1"), null], "Hasła nie są takie same"),
 });
 
-const PasswordReset = () => {
+const ResetPassword = () => {
   const { uid, token } = useParams();
   const [isSuccess, setIsSuccess] = useState(false);
   const { resetPassword } = useAuth();
@@ -134,4 +134,4 @@ const PasswordReset = () => {
   );
 };
 
-export default PasswordReset;
+export default ResetPassword;

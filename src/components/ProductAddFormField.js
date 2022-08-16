@@ -1,6 +1,6 @@
 import { Form, InputGroup } from "react-bootstrap";
 
-const ProductFormField = ({
+const ProductAddFormField = ({
   type,
   name,
   label,
@@ -36,4 +36,4 @@ const ProductFormField = ({
   );
 };
 
-export default ProductFormField;
+export default ProductAddFormField;

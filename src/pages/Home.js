@@ -1,5 +1,5 @@
 import React from "react";
-import DiaryContainer from "./DiaryContainer";
+import DiaryContainer from "../components/DiaryContainer";
 
 const Home = () => {
   return (

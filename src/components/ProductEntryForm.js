@@ -6,7 +6,7 @@ import { format } from "date-fns";
 import useAlert from "../hooks/useAlert";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useFormErrorHandler from "../hooks/useFormErrorHandler";
-import GoalFormField from "./GoalFormField";
+import MacroFormField from "./MacroFormField";
 import ProductEntryFormCalculatedField from "./ProductEntryFormCalculatedField";
 import ENDPOINTS from "../globals/endpoints";
 import "../styles/ProductEntryFormBox.scss";
@@ -20,7 +20,7 @@ const validationSchema = object().shape({
     .integer("Waga musi być liczbą całkowitą"),
 });
 
-const ProductEntryFormBox = ({
+const ProductEntryForm = ({
   product,
   date,
   meal,
@@ -85,7 +85,7 @@ const ProductEntryFormBox = ({
           <Container>
             <Row className="pb-3 d-flex justify-content-center">
               <Col xs={6} sm={4} md={3}>
-                <GoalFormField
+                <MacroFormField
                   label="Waga (g)"
                   suffix="g"
                   name="weight"
@@ -149,4 +149,4 @@ const ProductEntryFormBox = ({
   );
 };
 
-export default ProductEntryFormBox;
+export default ProductEntryForm;

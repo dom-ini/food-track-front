@@ -1,17 +1,17 @@
 import { useLocation, Navigate } from "react-router-dom";
 
 import useAuth from "../hooks/useAuth";
-import NotLoggedInLayout from "./NotLoggedInLayout";
+import LoggedInLayout from "../layouts/LoggedInLayout";
 
-const RequireNoAuth = () => {
+const RequireAuth = () => {
   const { isLoggedIn } = useAuth();
   const location = useLocation();
 
   return isLoggedIn() ? (
-    <Navigate to="/" state={{ from: location }} replace />
+    <LoggedInLayout />
   ) : (
-    <NotLoggedInLayout />
+    <Navigate to="/logowanie" state={{ from: location }} replace />
   );
 };
 
-export default RequireNoAuth;
+export default RequireAuth;

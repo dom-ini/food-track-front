@@ -3,7 +3,7 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import "../styles/NotLoggedInLayout.scss";
-import Logo from "./Logo";
+import Logo from "../components/Logo";
 
 const NotLoggedInLayout = () => {
   const location = useLocation();

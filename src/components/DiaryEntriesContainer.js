@@ -1,7 +1,7 @@
 import { Row, Col } from "react-bootstrap";
 
 import "../styles/DiaryEntriesContainer.scss";
-import MealContainer from "./MealContainer";
+import MealEntriesContainer from "./MealEntriesContainer";
 import { MEALS } from "../globals/utils";
 
 const DiaryEntriesContainer = ({ entries, mealMacros, deleteEntry, openModal }) => {
@@ -19,7 +19,7 @@ const DiaryEntriesContainer = ({ entries, mealMacros, deleteEntry, openModal }) 
         </Col>
       </Row>
       {MEALS.map((meal, i) => (
-        <MealContainer
+        <MealEntriesContainer
           key={i}
           mealName={meal}
           mealId={i}

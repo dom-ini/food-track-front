@@ -5,7 +5,7 @@ import { FaPowerOff, FaWrench, FaBullseye, FaPlus } from "react-icons/fa";
 
 import useWindowSize from "../hooks/useWindowSize";
 import useAuth from "../hooks/useAuth";
-import Logo from "./Logo";
+import Logo from "../components/Logo";
 import "../styles/Header.scss";
 
 const LARGE_SCREEN_BREAKPOINT = 991;

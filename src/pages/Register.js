@@ -7,7 +7,7 @@ import { object, string, ref } from "yup";
 import useAuth from "../hooks/useAuth";
 import useFormErrorHandler from "../hooks/useFormErrorHandler";
 import REGEX from "../globals/regex";
-import PasswordRequirementsInput from "./PasswordRequirementsInput";
+import PasswordRequirementsInput from "../components/PasswordRequirementsInput";
 import useAlert from "../hooks/useAlert";
 
 const validationSchema = object().shape({
@@ -57,7 +57,9 @@ const Register = () => {
             rejestracji adres e-mail
           </p>
           <Link to="/logowanie">
-            <Button variant="outline-primary" className="w-100">Przejdź do logowania</Button>
+            <Button variant="outline-primary" className="w-100">
+              Przejdź do logowania
+            </Button>
           </Link>
         </>
       ) : (
@@ -95,7 +97,7 @@ const Register = () => {
                 </Form.Group>
                 <Form.Group controlId="formPassword1" className="mb-2">
                   <Form.Label hidden>Hasło</Form.Label>
-                  <PasswordRequirementsInput 
+                  <PasswordRequirementsInput
                     name="password1"
                     placeholder="Hasło"
                     value={values.password1}
@@ -125,7 +127,12 @@ const Register = () => {
                     {errors?.password2}
                   </Form.Control.Feedback>
                 </Form.Group>
-                <Button variant="primary" type="submit" disabled={isSubmitting} className="w-100">
+                <Button
+                  variant="primary"
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-100"
+                >
                   Załóż konto
                 </Button>
               </Form>
@@ -133,7 +140,9 @@ const Register = () => {
           </Formik>
           <p className="mt-3 mb-2">Masz już konto?</p>
           <Link to="/logowanie">
-            <Button variant="outline-primary" className="w-100">Zaloguj się</Button>
+            <Button variant="outline-primary" className="w-100">
+              Zaloguj się
+            </Button>
           </Link>
         </>
       )}

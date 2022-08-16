@@ -1,18 +1,20 @@
 import { Route, Routes } from "react-router-dom";
 
-import Layout from "./components/Layout";
-import Missing404 from "./components/Missing404";
-import Home from "./components/Home";
-import Account from "./components/Account";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import RequireAuth from "./components/RequireAuth";
-import RequireNoAuth from "./components/RequireNoAuth";
-import ConfirmEmail from "./components/ConfirmEmail";
-import RequestPasswordReset from "./components/RequestPasswordReset";
-import PasswordReset from "./components/PasswordReset";
-import GoalsSet from "./components/GoalsSet";
-import ProductAdd from "./components/ProductAdd";
+import Layout from "./layouts/Layout";
+import Missing404 from "./layouts/Missing404";
+
+import Home from "./pages/Home";
+import Account from "./pages/Account";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ConfirmEmail from "./pages/ConfirmEmail";
+import RequestPasswordReset from "./pages/RequestPasswordReset";
+import ResetPassword from "./pages/ResetPassword";
+import SetGoals from "./pages/SetGoals";
+import AddProduct from "./pages/AddProduct";
+
+import RequireAuth from "./routes/RequireAuth";
+import RequireNoAuth from "./routes/RequireNoAuth";
 
 function App() {
   return (
@@ -27,7 +29,7 @@ function App() {
             <Route path="resetuj-haslo" element={<RequestPasswordReset />} />
             <Route
               path="resetuj-haslo/:uid/:token"
-              element={<PasswordReset />}
+              element={<ResetPassword />}
             />
           </Route>
 
@@ -35,8 +37,8 @@ function App() {
           <Route element={<RequireAuth />}>
             <Route path="/" element={<Home />} />
             <Route path="/konto" element={<Account />} />
-            <Route path="/cele" element={<GoalsSet />} />
-            <Route path="/dodaj-produkt" element={<ProductAdd />} />
+            <Route path="/cele" element={<SetGoals />} />
+            <Route path="/dodaj-produkt" element={<AddProduct />} />
           </Route>
         </Route>
         <Route path="*" element={<Missing404 />} />

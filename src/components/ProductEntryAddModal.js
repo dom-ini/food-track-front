@@ -4,11 +4,11 @@ import format from "date-fns/format";
 import pl from "date-fns/locale/pl";
 
 import { MEALS } from "../globals/utils";
-import EntryAddContainer from "./EntryAddContainer";
+import ProductEntryAddContainer from "./ProductEntryAddContainer";
 
 const LOCALE = pl;
 
-const EntryAddModal = ({
+const ProductEntryAddModal = ({
   isModalVisible,
   closeModal,
   date,
@@ -29,7 +29,7 @@ const EntryAddModal = ({
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <EntryAddContainer
+        <ProductEntryAddContainer
           date={date}
           meal={meal}
           closeModal={closeModal}
@@ -48,4 +48,4 @@ const EntryAddModal = ({
   );
 };
 
-export default EntryAddModal;
+export default ProductEntryAddModal;

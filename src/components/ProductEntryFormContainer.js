@@ -2,10 +2,16 @@ import { useState } from "react";
 import { Collapse, Button } from "react-bootstrap";
 import { GoPlus, GoDash } from "react-icons/go";
 
-import MealBox from "./MealBox";
-import ProductEntryFormBox from "./ProductEntryFormBox";
+import MealEntry from "./MealEntry";
+import ProductEntryForm from "./ProductEntryForm";
 
-const ProductEntryContainer = ({ product, date, meal, closeModal, setDiaryEntries }) => {
+const ProductEntryFormContainer = ({
+  product,
+  date,
+  meal,
+  closeModal,
+  setDiaryEntries,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,7 +24,7 @@ const ProductEntryContainer = ({ product, date, meal, closeModal, setDiaryEntrie
 
   return (
     <>
-      <MealBox
+      <MealEntry
         name={product.name}
         data={data}
         button={
@@ -34,7 +40,7 @@ const ProductEntryContainer = ({ product, date, meal, closeModal, setDiaryEntrie
       />
       <Collapse in={isOpen}>
         <div>
-          <ProductEntryFormBox
+          <ProductEntryForm
             product={product}
             date={date}
             meal={meal}
@@ -49,4 +55,4 @@ const ProductEntryContainer = ({ product, date, meal, closeModal, setDiaryEntrie
   );
 };
 
-export default ProductEntryContainer;
+export default ProductEntryFormContainer;

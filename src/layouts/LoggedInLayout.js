@@ -2,8 +2,8 @@ import { Container } from "react-bootstrap";
 import { Outlet, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-import Footer from "./Footer";
-import Header from "./Header";
+import Header from "../layouts/Header";
+import Footer from "../layouts/Footer";
 import "../styles/LoggedInLayout.scss";
 
 const LoggedInLayout = () => {

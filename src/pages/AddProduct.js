@@ -5,7 +5,7 @@ import { number, object, string } from "yup";
 import useAlert from "../hooks/useAlert";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useFormErrorHandler from "../hooks/useFormErrorHandler";
-import ProductFormField from "./ProductFormField";
+import ProductAddFormField from "../components/ProductAddFormField";
 import ENDPOINTS from "../globals/endpoints";
 
 const BASE_MACRO_VALIDATION = number()
@@ -66,7 +66,7 @@ const validationSchema = object().shape({
   portion_size: BASE_MACRO_VALIDATION,
 });
 
-const ProductAdd = () => {
+const AddProduct = () => {
   const axiosPrivate = useAxiosPrivate();
   const alert = useAlert();
   const setFormErrors = useFormErrorHandler();
@@ -120,7 +120,7 @@ const ProductAdd = () => {
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
             {FORM_FIELDS.map((field, i) => (
-              <ProductFormField
+              <ProductAddFormField
                 key={i}
                 type={field.type}
                 name={field.name}
@@ -150,4 +150,4 @@ const ProductAdd = () => {
   );
 };
 
-export default ProductAdd;
+export default AddProduct;
