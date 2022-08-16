@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
+import { CSSTransition } from "react-transition-group";
 import format from "date-fns/format";
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 import ENDPOINTS from "../globals/endpoints";
 import { calculateAbsoluteMacro, MACRO_TO_KCAL } from "../globals/utils";
-import { Spinner } from "react-bootstrap";
 import GoalDisplayer from "./GoalDisplayer";
 import "../styles/GoalsContainer.scss";
-import { CSSTransition } from "react-transition-group";
 
 const SMALL_SCREEN_BREAKPOINT = 575;
 
@@ -91,7 +91,7 @@ const GoalsContainer = ({ date, macrosEaten }) => {
   };
 
   return (
-    <div className="goals-container shadow">
+    <div className="goals-container mx-auto shadow">
       <CSSTransition classNames="fade" timeout={400} in={isLoading}>
         <div className="row mx-auto px-0 py-2 p-md-3 ">
           {isLoading ? (
