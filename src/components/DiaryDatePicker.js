@@ -1,68 +1,26 @@
-import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import {
-  add,
-  sub,
-  eachDayOfInterval,
-  isEqual,
-  format,
-  isToday,
-} from "date-fns";
-import pl from "date-fns/locale/pl";
+import { isEqual, isToday } from "date-fns";
 
 import "../styles/DiaryDatePicker.scss";
 
-const SMALL_SCREEN_BREAKPOINT = 575;
-const VISIBLE_DAYS = window.innerWidth > SMALL_SCREEN_BREAKPOINT ? 7 : 5;
-const LOCALE = pl;
-
-const DiaryDatePicker = ({ selectedDay, setSelectedDay }) => {
-  const [visibleDays, setVisibleDays] = useState([]);
-
-  const updateVisibleDays = (initialDate) => {
-    const datesRange = eachDayOfInterval({
-      start: initialDate,
-      end: add(initialDate, { days: VISIBLE_DAYS - 1 }),
-    });
-    setVisibleDays(datesRange);
-  };
-
-  const changeVisibleDaysRangeBy = (offset) => {
-    const initialDate = add(visibleDays[0], { days: offset });
-    updateVisibleDays(initialDate);
-  };
-
-  const getMiddleVisibleDay = () => {
-    const index = Math.floor(VISIBLE_DAYS / 2);
-    return visibleDays[index];
-  };
-
-  const handleDayPick = (date) => {
-    if (!isEqual(date, selectedDay)) setSelectedDay(date);
-  };
-
-  useEffect(() => {
-    const updateVisibleDaysOnSelectedDayChange = () => {
-      const offset = Math.floor(VISIBLE_DAYS / 2);
-      const initialDate = sub(selectedDay, { days: offset });
-      updateVisibleDays(initialDate);
-    };
-
-    updateVisibleDaysOnSelectedDayChange();
-  }, [selectedDay]);
-
+const DiaryDatePicker = ({
+  selectedDay,
+  currentDate,
+  visibleDays,
+  handleDayPick,
+  leftBtnAction,
+  rightBtnAction,
+}) => {
   return (
     <div className="date-picker-container">
       {visibleDays.length && (
         <>
-          <h3 className="current-date">
-            {format(getMiddleVisibleDay(), "LLLL y", { locale: LOCALE })}
-          </h3>
+          <h3 className="current-date">{currentDate}</h3>
           <div className="buttons">
             <Button
               variant="primary"
               className="rounded-circle"
-              onClick={() => changeVisibleDaysRangeBy(-VISIBLE_DAYS)}
+              onClick={leftBtnAction}
             >
               &#8249;
             </Button>
@@ -85,7 +43,7 @@ const DiaryDatePicker = ({ selectedDay, setSelectedDay }) => {
             <Button
               variant="primary"
               className="rounded-circle"
-              onClick={() => changeVisibleDaysRangeBy(VISIBLE_DAYS)}
+              onClick={rightBtnAction}
             >
               &#8250;
             </Button>
