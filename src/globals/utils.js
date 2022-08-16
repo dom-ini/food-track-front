@@ -1,3 +1,5 @@
+const SMALL_SCREEN_BREAKPOINT = 575;
+
 const MEALS = ["Śniadanie", "Lunch", "Obiad", "Podwieczorek", "Kolacja"];
 
 const MACRO_TO_KCAL = {
@@ -30,6 +32,7 @@ const convertObjectPropsToFloat = (object, keys) => {
 };
 
 export {
+  SMALL_SCREEN_BREAKPOINT,
   MEALS,
   MACRO_TO_KCAL,
   calculateAbsoluteMacro,

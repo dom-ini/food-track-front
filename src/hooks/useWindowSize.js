@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 
+import { SMALL_SCREEN_BREAKPOINT } from "../globals/utils";
+
 const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined,
   });
+  const [isScreenSmall, setIsScreenSmall] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -12,6 +15,7 @@ const useWindowSize = () => {
         width: window.innerWidth,
         height: window.innerHeight,
       });
+      setIsScreenSmall(window.innerWidth < SMALL_SCREEN_BREAKPOINT);
     };
 
     window.addEventListener("resize", handleResize);
@@ -21,7 +25,7 @@ const useWindowSize = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return windowSize;
+  return { windowSize, isScreenSmall };
 };
 
 export default useWindowSize;

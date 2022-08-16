@@ -8,16 +8,21 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import ENDPOINTS from "../globals/endpoints";
 import { convertArrayOfObjectsPropsToFloat } from "../globals/utils";
 import "../styles/EntryAddContainer.scss";
+import useWindowSize from "../hooks/useWindowSize";
 
-const SMALL_SCREEN_BREAKPOINT = 575;
-
-const ProductEntryAddContainer = ({ date, meal, closeModal, setDiaryEntries }) => {
+const ProductEntryAddContainer = ({
+  date,
+  meal,
+  closeModal,
+  setDiaryEntries,
+}) => {
   const [products, setProducts] = useState([]);
   const [next, setNext] = useState(null);
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const axiosPrivate = useAxiosPrivate();
   const alert = useAlert();
+  const { isScreenSmall } = useWindowSize();
 
   const getProducts = useCallback(
     async (url, controller) => {
@@ -87,11 +92,7 @@ const ProductEntryAddContainer = ({ date, meal, closeModal, setDiaryEntries }) =
     <>
       <ProductSearch className="mb-3" search={search} setSearch={setSearch} />
       <div className="entry-add-header d-flex">
-        <span>
-          {window.innerWidth < SMALL_SCREEN_BREAKPOINT
-            ? "na 100 g:"
-            : "wartości na 100 g:"}
-        </span>
+        <span>{isScreenSmall ? "na 100 g:" : "wartości na 100 g:"}</span>
         <Row className="text-center">
           <Col>B</Col>
           <Col>WW</Col>

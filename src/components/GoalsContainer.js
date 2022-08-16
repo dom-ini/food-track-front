@@ -6,11 +6,13 @@ import format from "date-fns/format";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 import ENDPOINTS from "../globals/endpoints";
-import { calculateAbsoluteMacro, MACRO_TO_KCAL } from "../globals/utils";
+import {
+  SMALL_SCREEN_BREAKPOINT,
+  calculateAbsoluteMacro,
+  MACRO_TO_KCAL,
+} from "../globals/utils";
 import GoalDisplayer from "./GoalDisplayer";
 import "../styles/GoalsContainer.scss";
-
-const SMALL_SCREEN_BREAKPOINT = 575;
 
 const MACROS = {
   kcal: { label: "kcal", color: "green" },
