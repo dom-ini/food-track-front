@@ -4,9 +4,9 @@ import "../styles/DiaryEntriesContainer.scss";
 import MealContainer from "./MealContainer";
 import { MEALS } from "../globals/utils";
 
-const DiaryEntriesContainer = ({ date, entries, mealMacros, deleteEntry, openModal }) => {
+const DiaryEntriesContainer = ({ entries, mealMacros, deleteEntry, openModal }) => {
   return (
-    <div className="diary-entries-container">
+    <div className="diary-entries-container mx-auto">
       <Row className="macros-labels text-center">
         <Col>
           <span>B</span>
