@@ -8,17 +8,14 @@ import useAuth from "../hooks/useAuth";
 import Logo from "../components/Logo";
 import "../styles/Header.scss";
 
-const LARGE_SCREEN_BREAKPOINT = 991;
-
 const Header = () => {
   const [show, setShow] = useState(false);
   const { logout } = useAuth();
-  const { width } = useWindowSize();
+  const { isScreenLarge } = useWindowSize();
 
   useEffect(() => {
-    const isBigScreen = width > LARGE_SCREEN_BREAKPOINT;
-    setShow(!isBigScreen);
-  }, [width]);
+    setShow(!isScreenLarge);
+  }, [isScreenLarge]);
 
   return (
     <Navbar expand="lg" bg="white" className="shadow-sm">
