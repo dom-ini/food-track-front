@@ -3,7 +3,7 @@ import { ProgressBar } from "react-bootstrap";
 
 import "../styles/GoalDisplayer.scss";
 
-const GoalDisplayer = ({
+const GoalProgress = ({
   className,
   label,
   eaten,
@@ -55,4 +55,4 @@ const GoalDisplayer = ({
   );
 };
 
-export default GoalDisplayer;
+export default GoalProgress;

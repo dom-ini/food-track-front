@@ -1,28 +1,18 @@
 import { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
-import { CSSTransition } from "react-transition-group";
 import format from "date-fns/format";
+
+import GoalsBar from "./GoalsBar";
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
-import ENDPOINTS from "../globals/endpoints";
+
 import { calculateAbsoluteMacro } from "../globals/utils";
-import { MACRO_TO_KCAL, SMALL_SCREEN_BREAKPOINT } from "../globals/constants";
-import GoalDisplayer from "./GoalDisplayer";
+import { MACRO_TO_KCAL } from "../globals/constants";
+import ENDPOINTS from "../globals/endpoints";
+
 import "../styles/GoalsContainer.scss";
 
-const MACROS = {
-  kcal: { label: "kcal", color: "green" },
-  protein: { label: "białko", color: "orange" },
-  carb: {
-    label:
-      window.innerWidth < SMALL_SCREEN_BREAKPOINT ? "węgl." : "węglowodany",
-    color: "blue",
-  },
-  fat: { label: "tłuszcze", color: "brown" },
-};
-
-const GoalsContainer = ({ date, macrosEaten }) => {
+const GoalsBarContainer = ({ date, macrosEaten }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [goals, setGoals] = useState({});
   const axiosPrivate = useAxiosPrivate();
@@ -90,29 +80,8 @@ const GoalsContainer = ({ date, macrosEaten }) => {
   };
 
   return (
-    <div className="goals-container mx-auto shadow">
-      <CSSTransition classNames="fade" timeout={400} in={isLoading}>
-        <div className="row mx-auto px-0 py-2 p-md-3 ">
-          {isLoading ? (
-            <Spinner animation="border" className="mx-auto my-auto" />
-          ) : (
-            Object.keys(MACROS).map((macro, i) => (
-              <GoalDisplayer
-                className="col-3 my-auto"
-                label={MACROS[macro].label}
-                eaten={macrosEaten[macro]}
-                goal={goals[macro]}
-                roundEaten={macro === "kcal" ? true : false}
-                suffix={macro === "kcal" ? "" : "g"}
-                barColor={MACROS[macro].color}
-                key={i}
-              />
-            ))
-          )}
-        </div>
-      </CSSTransition>
-    </div>
+    <GoalsBar isLoading={isLoading} macrosEaten={macrosEaten} goals={goals} />
   );
 };
 
-export default GoalsContainer;
+export default GoalsBarContainer;

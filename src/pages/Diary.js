@@ -3,11 +3,13 @@ import { format } from "date-fns";
 
 import DiaryDatePickerContainer from "../components/DiaryDatePickerContainer";
 import DiaryEntriesContainer from "../components/DiaryEntriesContainer";
-import GoalsContainer from "../components/GoalsContainer";
+import ProductEntryAddModal from "../components/ProductEntryAddModal";
+import GoalsBarContainer from "../components/GoalsBarContainer";
+
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
+
 import ENDPOINTS from "../globals/endpoints";
-import ProductEntryAddModal from "../components/ProductEntryAddModal";
 
 const ENTRIES_BY_MEAL_TEMPLATE = {
   0: [],
@@ -191,7 +193,7 @@ const Diary = () => {
         deleteEntry={handleEntryDelete}
         openModal={openModalAndSelectMeal}
       />
-      <GoalsContainer date={selectedDay} macrosEaten={macrosEaten} />
+      <GoalsBarContainer date={selectedDay} macrosEaten={macrosEaten} />
       <ProductEntryAddModal
         isModalVisible={isModalVisible}
         date={selectedDay}
