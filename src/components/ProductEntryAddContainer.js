@@ -1,14 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import { Row, Col, Spinner, Button } from "react-bootstrap";
-import ProductEntryFormContainer from "./ProductEntryFormContainer";
 
+import ProductEntryAdd from "./ProductEntryAdd";
 import ProductSearch from "./ProductSearch";
-import useAlert from "../hooks/useAlert";
+
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import ENDPOINTS from "../globals/endpoints";
+import useAlert from "../hooks/useAlert";
+
 import { convertArrayOfObjectsPropsToFloat } from "../globals/utils";
-import "../styles/EntryAddContainer.scss";
-import useWindowSize from "../hooks/useWindowSize";
+import ENDPOINTS from "../globals/endpoints";
 
 const ProductEntryAddContainer = ({
   date,
@@ -20,9 +20,9 @@ const ProductEntryAddContainer = ({
   const [next, setNext] = useState(null);
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
   const axiosPrivate = useAxiosPrivate();
   const alert = useAlert();
-  const { isScreenSmall } = useWindowSize();
 
   const getProducts = useCallback(
     async (url, controller) => {
@@ -91,42 +91,16 @@ const ProductEntryAddContainer = ({
   return (
     <>
       <ProductSearch className="mb-3" search={search} setSearch={setSearch} />
-      <div className="entry-add-header d-flex">
-        <span>{isScreenSmall ? "na 100 g:" : "wartości na 100 g:"}</span>
-        <Row className="text-center">
-          <Col>B</Col>
-          <Col>WW</Col>
-          <Col>T</Col>
-        </Row>
-      </div>
-      {products?.length ? (
-        products.map((product, i) => (
-          <ProductEntryFormContainer
-            product={product}
-            date={date}
-            meal={meal}
-            closeModal={closeModal}
-            setDiaryEntries={setDiaryEntries}
-            key={i}
-          />
-        ))
-      ) : isLoading ? (
-        <div className="text-center mt-3 mb-1">
-          <Spinner animation="border" />
-        </div>
-      ) : (
-        <p className="text-center mt-3">Nie znaleziono produktów :C</p>
-      )}
-      {next && !isLoading && (
-        <Button
-          className="d-block mx-auto mt-3"
-          disabled={isLoading}
-          onClick={() => appendToListOfProducts(next)}
-          role="button"
-        >
-          Wczytaj więcej...
-        </Button>
-      )}
+      <ProductEntryAdd
+        products={products}
+        next={next}
+        date={date}
+        meal={meal}
+        isLoading={isLoading}
+        closeModal={closeModal}
+        setDiaryEntries={setDiaryEntries}
+        appendToListOfProducts={appendToListOfProducts}
+      />
     </>
   );
 };

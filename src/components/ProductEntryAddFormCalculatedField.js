@@ -4,7 +4,7 @@ import { useFormikContext } from "formik";
 
 import { calculateMacroFromWeight } from "../globals/utils";
 
-const ProductEntryFormCalculatedField = ({
+const ProductEntryAddFormCalculatedField = ({
   label,
   suffix,
   name,
@@ -28,4 +28,4 @@ const ProductEntryFormCalculatedField = ({
   );
 };
 
-export default ProductEntryFormCalculatedField;
+export default ProductEntryAddFormCalculatedField;
