@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import format from "date-fns/format";
 import pl from "date-fns/locale/pl";
 
-import { MEALS } from "../globals/utils";
+import { MEALS } from "../globals/constants";
 import ProductEntryAddContainer from "./ProductEntryAddContainer";
 
 const LOCALE = pl;

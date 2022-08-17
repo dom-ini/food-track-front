@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   SMALL_SCREEN_BREAKPOINT,
   LARGE_SCREEN_BREAKPOINT,
-} from "../globals/utils";
+} from "../globals/constants";
 
 const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({

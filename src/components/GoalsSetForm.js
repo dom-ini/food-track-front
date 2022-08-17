@@ -4,7 +4,7 @@ import { Form, Button, Row, Col, Spinner } from "react-bootstrap";
 import GoalCalculatedField from "../components/GoalCalculatedField";
 import MacroFormField from "../components/MacroFormField";
 
-import { MACRO_TO_KCAL } from "../globals/utils";
+import { MACRO_TO_KCAL } from "../globals/constants";
 
 const GoalsSetForm = ({
   isLoading,

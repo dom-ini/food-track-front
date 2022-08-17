@@ -4,7 +4,7 @@ import pl from "date-fns/locale/pl";
 
 import DiaryDatePicker from "./DiaryDatePicker";
 
-import { SMALL_SCREEN_BREAKPOINT } from "../globals/utils";
+import { SMALL_SCREEN_BREAKPOINT } from "../globals/constants";
 
 const VISIBLE_DAYS = window.innerWidth < SMALL_SCREEN_BREAKPOINT ? 5 : 7;
 const LOCALE = pl;

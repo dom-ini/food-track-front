@@ -6,11 +6,8 @@ import format from "date-fns/format";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 import ENDPOINTS from "../globals/endpoints";
-import {
-  SMALL_SCREEN_BREAKPOINT,
-  calculateAbsoluteMacro,
-  MACRO_TO_KCAL,
-} from "../globals/utils";
+import { calculateAbsoluteMacro } from "../globals/utils";
+import { MACRO_TO_KCAL, SMALL_SCREEN_BREAKPOINT } from "../globals/constants";
 import GoalDisplayer from "./GoalDisplayer";
 import "../styles/GoalsContainer.scss";
 

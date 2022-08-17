@@ -2,7 +2,7 @@ import { Row, Col } from "react-bootstrap";
 
 import "../styles/DiaryEntriesContainer.scss";
 import MealEntriesContainer from "./MealEntriesContainer";
-import { MEALS } from "../globals/utils";
+import { MEALS } from "../globals/constants";
 
 const DiaryEntriesContainer = ({ entries, mealMacros, deleteEntry, openModal }) => {
   return (
