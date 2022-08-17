@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
 
-import DiaryDatePicker from "./DiaryDatePicker";
-import DiaryEntriesContainer from "./DiaryEntriesContainer";
-import GoalsContainer from "./GoalsContainer";
+import DiaryDatePickerContainer from "../components/DiaryDatePickerContainer";
+import DiaryEntriesContainer from "../components/DiaryEntriesContainer";
+import GoalsContainer from "../components/GoalsContainer";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 import ENDPOINTS from "../globals/endpoints";
-import ProductEntryAddModal from "./ProductEntryAddModal";
+import ProductEntryAddModal from "../components/ProductEntryAddModal";
 
 const ENTRIES_BY_MEAL_TEMPLATE = {
   0: [],
@@ -27,7 +27,7 @@ const MACROS_BY_MEAL_TEMPLATE = {
 
 const MACROS_EATEN_TEMPLATE = { kcal: 0, protein: 0, fat: 0, carb: 0 };
 
-// jedna funkcja do tworzenia obiektu z template
+// TODO: jedna funkcja do tworzenia obiektu z template
 
 const getEmptyEntriesByMeal = () => {
   return JSON.parse(JSON.stringify(ENTRIES_BY_MEAL_TEMPLATE));
@@ -41,7 +41,7 @@ const getEmptyMacrosEaten = () => {
   return JSON.parse(JSON.stringify(MACROS_EATEN_TEMPLATE));
 };
 
-const DiaryContainer = () => {
+const Diary = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState(null);
   const [selectedDay, setSelectedDay] = useState(
@@ -180,7 +180,7 @@ const DiaryContainer = () => {
 
   return (
     <div>
-      <DiaryDatePicker
+      <DiaryDatePickerContainer
         selectedDay={selectedDay}
         setSelectedDay={setSelectedDay}
       />
@@ -203,4 +203,4 @@ const DiaryContainer = () => {
   );
 };
 
-export default DiaryContainer;
+export default Diary;

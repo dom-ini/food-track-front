@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Missing404 from "./layouts/Missing404";
 
-import Home from "./pages/Home";
+import Diary from "./pages/Diary";
 import Account from "./pages/Account";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -35,7 +35,7 @@ function App() {
 
           {/* protected routes */}
           <Route element={<RequireAuth />}>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Diary />} />
             <Route path="/konto" element={<Account />} />
             <Route path="/cele" element={<SetGoals />} />
             <Route path="/dodaj-produkt" element={<AddProduct />} />
