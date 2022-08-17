@@ -21,9 +21,14 @@ const convertObjectPropsToFloat = (object, keys) => {
   return object;
 };
 
+const createObjectFromTemplate = (template) => {
+  return JSON.parse(JSON.stringify(template));
+};
+
 export {
   calculateAbsoluteMacro,
   calculateMacroFromWeight,
   convertObjectPropsToFloat,
   convertArrayOfObjectsPropsToFloat,
+  createObjectFromTemplate
 };

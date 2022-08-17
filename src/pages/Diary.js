@@ -9,39 +9,13 @@ import GoalsBarContainer from "../components/GoalsBarContainer";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 
+import { createObjectFromTemplate } from "../globals/utils";
 import ENDPOINTS from "../globals/endpoints";
-
-const ENTRIES_BY_MEAL_TEMPLATE = {
-  0: [],
-  1: [],
-  2: [],
-  3: [],
-  4: [],
-};
-
-const MACROS_BY_MEAL_TEMPLATE = {
-  0: { kcal: 0, protein: 0, fat: 0, carb: 0 },
-  1: { kcal: 0, protein: 0, fat: 0, carb: 0 },
-  2: { kcal: 0, protein: 0, fat: 0, carb: 0 },
-  3: { kcal: 0, protein: 0, fat: 0, carb: 0 },
-  4: { kcal: 0, protein: 0, fat: 0, carb: 0 },
-};
-
-const MACROS_EATEN_TEMPLATE = { kcal: 0, protein: 0, fat: 0, carb: 0 };
-
-// TODO: jedna funkcja do tworzenia obiektu z template
-
-const getEmptyEntriesByMeal = () => {
-  return JSON.parse(JSON.stringify(ENTRIES_BY_MEAL_TEMPLATE));
-};
-
-const getEmptyMacrosByMeal = () => {
-  return JSON.parse(JSON.stringify(MACROS_BY_MEAL_TEMPLATE));
-};
-
-const getEmptyMacrosEaten = () => {
-  return JSON.parse(JSON.stringify(MACROS_EATEN_TEMPLATE));
-};
+import {
+  ENTRIES_BY_MEAL_TEMPLATE,
+  MACROS_BY_MEAL_TEMPLATE,
+  MACROS_EATEN_TEMPLATE,
+} from "../globals/constants";
 
 const Diary = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -50,16 +24,22 @@ const Diary = () => {
     new Date(new Date().setHours(0, 0, 0, 0))
   );
   const [diaryEntries, setDiaryEntries] = useState([]);
-  const [entriesByMeal, setEntriesByMeal] = useState(getEmptyEntriesByMeal());
-  const [macrosByMeal, setMacrosByMeal] = useState(getEmptyMacrosByMeal());
-  const [macrosEaten, setMacrosEaten] = useState(getEmptyMacrosEaten());
+  const [entriesByMeal, setEntriesByMeal] = useState(
+    createObjectFromTemplate(ENTRIES_BY_MEAL_TEMPLATE)
+  );
+  const [macrosByMeal, setMacrosByMeal] = useState(
+    createObjectFromTemplate(MACROS_BY_MEAL_TEMPLATE)
+  );
+  const [macrosEaten, setMacrosEaten] = useState(
+    createObjectFromTemplate(MACROS_EATEN_TEMPLATE)
+  );
   const axiosPrivate = useAxiosPrivate();
   const alert = useAlert();
 
   useEffect(() => {
-    setEntriesByMeal(getEmptyEntriesByMeal());
-    setMacrosByMeal(getEmptyMacrosByMeal());
-    setMacrosEaten(getEmptyMacrosEaten());
+    setEntriesByMeal(createObjectFromTemplate(ENTRIES_BY_MEAL_TEMPLATE));
+    setMacrosByMeal(createObjectFromTemplate(MACROS_BY_MEAL_TEMPLATE));
+    setMacrosEaten(createObjectFromTemplate(MACROS_EATEN_TEMPLATE));
 
     let isMounted = true;
     const controller = new AbortController();
@@ -93,9 +73,9 @@ const Diary = () => {
 
   useEffect(() => {
     const transformEntriesData = () => {
-      const entriesByMealTemp = getEmptyEntriesByMeal();
-      const macrosByMealTemp = getEmptyMacrosByMeal();
-      const macrosEatenTemp = getEmptyMacrosEaten();
+      const entriesByMealTemp = createObjectFromTemplate(ENTRIES_BY_MEAL_TEMPLATE);
+      const macrosByMealTemp = createObjectFromTemplate(MACROS_BY_MEAL_TEMPLATE);
+      const macrosEatenTemp = createObjectFromTemplate(MACROS_EATEN_TEMPLATE);
 
       diaryEntries.forEach((item) => {
         const entryId = item.id;
