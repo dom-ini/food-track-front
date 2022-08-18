@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { add, sub, eachDayOfInterval, isEqual, format } from "date-fns";
-import pl from "date-fns/locale/pl";
 
 import DiaryDatePicker from "./DiaryDatePicker";
 
-import { SMALL_SCREEN_BREAKPOINT } from "../globals/constants";
+import {
+  SMALL_SCREEN_BREAKPOINT,
+  DATE_LOCALE as LOCALE,
+} from "../globals/constants";
 
 const VISIBLE_DAYS = window.innerWidth < SMALL_SCREEN_BREAKPOINT ? 5 : 7;
-const LOCALE = pl;
 
 const DiaryDatePickerContainer = ({ selectedDay, setSelectedDay }) => {
   const [visibleDays, setVisibleDays] = useState([]);

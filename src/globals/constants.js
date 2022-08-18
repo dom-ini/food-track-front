@@ -1,5 +1,9 @@
+import pl from "date-fns/locale/pl";
+
 const SMALL_SCREEN_BREAKPOINT = 575;
 const LARGE_SCREEN_BREAKPOINT = 991;
+
+const DATE_LOCALE = pl;
 
 const MEALS = ["Śniadanie", "Lunch", "Obiad", "Podwieczorek", "Kolacja"];
 const MACROS = ["kcal", "protein", "fat", "carb"];
@@ -28,6 +32,7 @@ const MACROS_EATEN_TEMPLATE = getEmptyMacros();
 export {
   SMALL_SCREEN_BREAKPOINT,
   LARGE_SCREEN_BREAKPOINT,
+  DATE_LOCALE,
   MEALS,
   MACROS,
   MACRO_TO_KCAL,

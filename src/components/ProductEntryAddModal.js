@@ -1,12 +1,10 @@
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import format from "date-fns/format";
-import pl from "date-fns/locale/pl";
 
-import { MEALS } from "../globals/constants";
 import ProductEntryAddContainer from "./ProductEntryAddContainer";
 
-const LOCALE = pl;
+import { MEALS, DATE_LOCALE as LOCALE } from "../globals/constants";
 
 const ProductEntryAddModal = ({
   isModalVisible,
@@ -37,7 +35,12 @@ const ProductEntryAddModal = ({
         />
       </Modal.Body>
       <Modal.Footer className="justify-content-between">
-        <Button as={Link} to="/dodaj-produkt" variant="outline-primary" role="button">
+        <Button
+          as={Link}
+          to="/dodaj-produkt"
+          variant="outline-primary"
+          role="button"
+        >
           Dodaj produkt do bazy
         </Button>
         <Button variant="secondary" onClick={closeModal} role="button">
