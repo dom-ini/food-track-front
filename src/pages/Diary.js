@@ -9,12 +9,16 @@ import GoalsBarContainer from "../components/GoalsBarContainer";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 
-import { createObjectFromTemplate } from "../globals/utils";
+import {
+  createObjectFromTemplate,
+  calculateMacroFromWeight,
+} from "../globals/utils";
 import ENDPOINTS from "../globals/endpoints";
 import {
   ENTRIES_BY_MEAL_TEMPLATE,
   MACROS_BY_MEAL_TEMPLATE,
   MACROS_EATEN_TEMPLATE,
+  MACROS,
 } from "../globals/constants";
 
 const Diary = () => {
@@ -82,38 +86,23 @@ const Diary = () => {
       const macrosEatenTemp = createObjectFromTemplate(MACROS_EATEN_TEMPLATE);
 
       diaryEntries.forEach((item) => {
-        const entryId = item.id;
-        const entry = item.entry;
+        const product = item.entry.product;
         const mealId = item.meal;
-        const weight = entry.weight;
-        const { kcal, protein, fat, carb } = calculateMacrosByWeight(
-          weight,
-          entry.product.kcal,
-          entry.product.protein,
-          entry.product.fat,
-          entry.product.carb
-        );
+        const weight = item.entry.weight;
+        const macros = calculateMacrosByWeight(weight, product, MACROS);
 
         const transformedEntry = {
-          name: entry.product.name,
+          name: product.name,
+          id: item.id,
           weight,
-          kcal,
-          protein,
-          fat,
-          carb,
-          id: entryId,
+          ...macros,
         };
         entriesByMealTemp[mealId].push(transformedEntry);
 
-        macrosByMealTemp[mealId].kcal += kcal;
-        macrosByMealTemp[mealId].protein += protein;
-        macrosByMealTemp[mealId].fat += fat;
-        macrosByMealTemp[mealId].carb += carb;
-
-        macrosEatenTemp.kcal += kcal;
-        macrosEatenTemp.protein += protein;
-        macrosEatenTemp.fat += fat;
-        macrosEatenTemp.carb += carb;
+        MACROS.forEach((macro) => {
+          macrosByMealTemp[mealId][macro] += macros[macro];
+          macrosEatenTemp[macro] += macros[macro];
+        });
       });
 
       setEntriesByMeal(entriesByMealTemp);
@@ -121,19 +110,14 @@ const Diary = () => {
       setMacrosEaten(macrosEatenTemp);
     };
 
-    const calculateMacrosByWeight = (
-      weight,
-      kcal100,
-      protein100,
-      fat100,
-      carb100
-    ) => {
-      return {
-        kcal: (weight * kcal100) / 100,
-        protein: (weight * protein100) / 100,
-        fat: (weight * fat100) / 100,
-        carb: (weight * carb100) / 100,
-      };
+    const calculateMacrosByWeight = (weight, product, macroNames) => {
+      return macroNames.reduce(
+        (prev, curr) => ({
+          ...prev,
+          [curr]: calculateMacroFromWeight(weight, product[curr]),
+        }),
+        {}
+      );
     };
 
     transformEntriesData();
