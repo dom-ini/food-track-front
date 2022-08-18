@@ -4,7 +4,7 @@ const calculateAbsoluteMacro = (kcal, perc, multiplier) => {
 
 const calculateMacroFromWeight = (weight, macroIn100) => {
   const macroAmount = (weight / 100) * macroIn100;
-  return parseFloat(macroAmount).toFixed(1);
+  return macroAmount;
 };
 
 const createObjectFromTemplate = (template) => {
