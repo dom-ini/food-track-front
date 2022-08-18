@@ -2,6 +2,10 @@ const SMALL_SCREEN_BREAKPOINT = 575;
 const LARGE_SCREEN_BREAKPOINT = 991;
 
 const MEALS = ["Śniadanie", "Lunch", "Obiad", "Podwieczorek", "Kolacja"];
+const MACROS = ["kcal", "protein", "fat", "carb"];
+
+const getEmptyMacros = () =>
+  MACROS.reduce((prev, curr) => ({ ...prev, [curr]: 0 }), {});
 
 const MACRO_TO_KCAL = {
   PROTEIN: 4,
@@ -9,23 +13,17 @@ const MACRO_TO_KCAL = {
   CARB: 4,
 };
 
-const ENTRIES_BY_MEAL_TEMPLATE = {
-  0: [],
-  1: [],
-  2: [],
-  3: [],
-  4: [],
-};
+const ENTRIES_BY_MEAL_TEMPLATE = MEALS.reduce(
+  (prev, curr, i) => ({ ...prev, [i]: [] }),
+  {}
+);
 
-const MACROS_BY_MEAL_TEMPLATE = {
-  0: { kcal: 0, protein: 0, fat: 0, carb: 0 },
-  1: { kcal: 0, protein: 0, fat: 0, carb: 0 },
-  2: { kcal: 0, protein: 0, fat: 0, carb: 0 },
-  3: { kcal: 0, protein: 0, fat: 0, carb: 0 },
-  4: { kcal: 0, protein: 0, fat: 0, carb: 0 },
-};
+const MACROS_BY_MEAL_TEMPLATE = MEALS.reduce(
+  (prev, curr, i) => ({ ...prev, [i]: getEmptyMacros() }),
+  {}
+);
 
-const MACROS_EATEN_TEMPLATE = { kcal: 0, protein: 0, fat: 0, carb: 0 };
+const MACROS_EATEN_TEMPLATE = getEmptyMacros();
 
 export {
   SMALL_SCREEN_BREAKPOINT,
@@ -34,5 +32,5 @@ export {
   MACRO_TO_KCAL,
   ENTRIES_BY_MEAL_TEMPLATE,
   MACROS_BY_MEAL_TEMPLATE,
-  MACROS_EATEN_TEMPLATE
+  MACROS_EATEN_TEMPLATE,
 };
