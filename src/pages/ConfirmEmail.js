@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import useAuth from "../hooks/useAuth";
 import EmailConfirm from "../components/EmailConfirm";
+
+import useAuth from "../hooks/useAuth";
 
 const ConfirmEmail = () => {
   const [isLoading, setIsLoading] = useState(true);

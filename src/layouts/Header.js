@@ -3,9 +3,11 @@ import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FaPowerOff, FaWrench, FaBullseye, FaPlus } from "react-icons/fa";
 
+import Logo from "../components/Logo";
+
 import useWindowSize from "../hooks/useWindowSize";
 import useAuth from "../hooks/useAuth";
-import Logo from "../components/Logo";
+
 import "../styles/Header.scss";
 
 const Header = () => {

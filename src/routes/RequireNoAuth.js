@@ -1,7 +1,8 @@
 import { useLocation, Navigate } from "react-router-dom";
 
-import useAuth from "../hooks/useAuth";
 import NotLoggedInLayout from "../layouts/NotLoggedInLayout";
+
+import useAuth from "../hooks/useAuth";
 
 const RequireNoAuth = () => {
   const { isLoggedIn } = useAuth();

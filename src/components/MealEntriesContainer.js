@@ -1,8 +1,9 @@
 import { Button } from "react-bootstrap";
 import { GoPlus, GoDash } from "react-icons/go";
 
-import "../styles/MealContainer.scss";
 import MealEntry from "./MealEntry";
+
+import "../styles/MealContainer.scss";
 
 const MealEntriesContainer = ({
   mealName,

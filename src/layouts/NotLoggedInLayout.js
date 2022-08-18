@@ -2,8 +2,9 @@ import { Row, Col, Container } from "react-bootstrap";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-import "../styles/NotLoggedInLayout.scss";
 import Logo from "../components/Logo";
+
+import "../styles/NotLoggedInLayout.scss";
 
 const NotLoggedInLayout = () => {
   const location = useLocation();
