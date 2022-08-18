@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import { Form, Row, Col, Button, Container, Collapse } from "react-bootstrap";
 
-import ProductEntryAddFormCalculatedField from "./ProductEntryAddFormCalculatedField";
+import MacroCalculatedField from "./MacroCalculatedField";
 import MacroFormField from "./MacroFormField";
 
 import "../styles/ProductEntryFormBox.scss";
@@ -60,39 +60,43 @@ const ProductEntryAddForm = ({
                 </Row>
                 <Row className="gy-3">
                   <Col xs={12} sm={6} lg={3}>
-                    <ProductEntryAddFormCalculatedField
+                    <MacroCalculatedField
                       label="kcal"
-                      suffix="kcal"
                       name="kcal"
-                      value={values.kcal}
-                      macroIn100={product.kcal}
+                      suffix="kcal"
+                      inputValue={values.kcal}
+                      baseValue={values.weight}
+                      percentage={product.kcal}
                     />
                   </Col>
                   <Col xs={12} sm={6} lg={3}>
-                    <ProductEntryAddFormCalculatedField
+                    <MacroCalculatedField
                       label="Białko (g)"
-                      suffix="g"
                       name="protein"
-                      value={values.protein}
-                      macroIn100={product.protein}
+                      suffix="g"
+                      inputValue={values.protein}
+                      baseValue={values.weight}
+                      percentage={product.protein}
                     />
                   </Col>
                   <Col xs={12} sm={6} lg={3}>
-                    <ProductEntryAddFormCalculatedField
+                    <MacroCalculatedField
                       label="Węglowodany (g)"
-                      suffix="g"
                       name="carb"
-                      value={values.carb}
-                      macroIn100={product.carb}
+                      suffix="g"
+                      inputValue={values.carb}
+                      baseValue={values.weight}
+                      percentage={product.carb}
                     />
                   </Col>
                   <Col xs={12} sm={6} lg={3}>
-                    <ProductEntryAddFormCalculatedField
+                    <MacroCalculatedField
                       label="Tłuszcze (g)"
-                      suffix="g"
                       name="fat"
-                      value={values.fat}
-                      macroIn100={product.fat}
+                      suffix="g"
+                      inputValue={values.fat}
+                      baseValue={values.weight}
+                      percentage={product.fat}
                     />
                   </Col>
                 </Row>

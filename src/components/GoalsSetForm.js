@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import { Form, Button, Row, Col, Spinner } from "react-bootstrap";
 
-import GoalCalculatedField from "../components/GoalCalculatedField";
+import MacroCalculatedField from "../components/MacroCalculatedField";
 import MacroFormField from "./MacroFormField";
 
 import { MACRO_TO_KCAL } from "../globals/constants";
@@ -78,11 +78,13 @@ const GoalsSetForm = ({
                   </Col>
                   <Col xs={6} sm={5}>
                     <Form.Group controlId="formProteinAbs" className="mb-2">
-                      <GoalCalculatedField
+                      <MacroCalculatedField
                         label="Białko (g)"
                         name="protein_abs"
-                        value={values.protein_abs}
-                        basedOn="protein_perc"
+                        suffix="g"
+                        inputValue={values.protein_abs}
+                        baseValue={values.daily_kcal_goal}
+                        percentage={values.protein_perc}
                         multiplier={MACRO_TO_KCAL.PROTEIN}
                       />
                     </Form.Group>
@@ -107,11 +109,13 @@ const GoalsSetForm = ({
                   </Col>
                   <Col xs={6} sm={5}>
                     <Form.Group controlId="formFatAbs" className="mb-2">
-                      <GoalCalculatedField
+                      <MacroCalculatedField
                         label="Tłuszcze (g)"
                         name="fat_abs"
-                        value={values.fat_abs}
-                        basedOn="fat_perc"
+                        suffix="g"
+                        inputValue={values.fat_abs}
+                        baseValue={values.daily_kcal_goal}
+                        percentage={values.fat_perc}
                         multiplier={MACRO_TO_KCAL.FAT}
                       />
                     </Form.Group>
@@ -136,11 +140,13 @@ const GoalsSetForm = ({
                   </Col>
                   <Col xs={6} sm={5}>
                     <Form.Group controlId="formCarbAbs" className="mb-2">
-                      <GoalCalculatedField
+                      <MacroCalculatedField
                         label="Węglowodany (g)"
                         name="carb_abs"
-                        value={values.carb_abs}
-                        basedOn="carb_perc"
+                        suffix="g"
+                        inputValue={values.carb_abs}
+                        baseValue={values.daily_kcal_goal}
+                        percentage={values.carb_perc}
                         multiplier={MACRO_TO_KCAL.CARB}
                       />
                     </Form.Group>

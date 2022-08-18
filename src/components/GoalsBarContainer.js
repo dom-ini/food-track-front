@@ -6,7 +6,7 @@ import GoalsBar from "./GoalsBar";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 
-import { calculateAbsoluteMacro } from "../globals/utils";
+import { calculateMacro } from "../globals/utils";
 import { MACRO_TO_KCAL } from "../globals/constants";
 import ENDPOINTS from "../globals/endpoints";
 
@@ -55,21 +55,21 @@ const GoalsBarContainer = ({ date, macrosEaten }) => {
 
   const transformGoalsToAbsolute = (data) => {
     const kcal = data.daily_kcal_goal;
-    const protein = calculateAbsoluteMacro(
+    const protein = calculateMacro(
       kcal,
       data.daily_protein_goal,
       MACRO_TO_KCAL.PROTEIN
-    );
-    const fat = calculateAbsoluteMacro(
+    ).toFixed(1);
+    const fat = calculateMacro(
       kcal,
       data.daily_fat_goal,
       MACRO_TO_KCAL.FAT
-    );
-    const carb = calculateAbsoluteMacro(
+    ).toFixed(1);
+    const carb = calculateMacro(
       kcal,
       data.daily_carb_goal,
       MACRO_TO_KCAL.CARB
-    );
+    ).toFixed(1);
 
     return {
       kcal,

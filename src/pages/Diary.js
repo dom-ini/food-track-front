@@ -9,10 +9,7 @@ import GoalsBarContainer from "../components/GoalsBarContainer";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 
-import {
-  createObjectFromTemplate,
-  calculateMacroFromWeight,
-} from "../globals/utils";
+import { createObjectFromTemplate, calculateMacro } from "../globals/utils";
 import ENDPOINTS from "../globals/endpoints";
 import {
   ENTRIES_BY_MEAL_TEMPLATE,
@@ -114,7 +111,7 @@ const Diary = () => {
       return macroNames.reduce(
         (prev, curr) => ({
           ...prev,
-          [curr]: calculateMacroFromWeight(weight, product[curr]),
+          [curr]: calculateMacro(weight, product[curr]),
         }),
         {}
       );
