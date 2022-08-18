@@ -7,20 +7,6 @@ const calculateMacroFromWeight = (weight, macroIn100) => {
   return parseFloat(macroAmount).toFixed(1);
 };
 
-const convertArrayOfObjectsPropsToFloat = (arr, keys) => {
-  arr.forEach((item, i) => {
-    arr[i] = convertObjectPropsToFloat(item, keys);
-  });
-  return arr;
-};
-
-const convertObjectPropsToFloat = (object, keys) => {
-  keys.forEach((key) => {
-    if (object[key]) object[key] = parseFloat(object[key]);
-  });
-  return object;
-};
-
 const createObjectFromTemplate = (template) => {
   return JSON.parse(JSON.stringify(template));
 };
@@ -28,7 +14,5 @@ const createObjectFromTemplate = (template) => {
 export {
   calculateAbsoluteMacro,
   calculateMacroFromWeight,
-  convertObjectPropsToFloat,
-  convertArrayOfObjectsPropsToFloat,
   createObjectFromTemplate
 };

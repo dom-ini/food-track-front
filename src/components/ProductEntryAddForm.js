@@ -65,7 +65,7 @@ const ProductEntryAddForm = ({
                       suffix="kcal"
                       name="kcal"
                       value={values.kcal}
-                      macroIn100={product.kcal_for_100}
+                      macroIn100={product.kcal}
                     />
                   </Col>
                   <Col xs={12} sm={6} lg={3}>
@@ -74,7 +74,7 @@ const ProductEntryAddForm = ({
                       suffix="g"
                       name="protein"
                       value={values.protein}
-                      macroIn100={product.protein_for_100}
+                      macroIn100={product.protein}
                     />
                   </Col>
                   <Col xs={12} sm={6} lg={3}>
@@ -83,7 +83,7 @@ const ProductEntryAddForm = ({
                       suffix="g"
                       name="carb"
                       value={values.carb}
-                      macroIn100={product.carbo_for_100}
+                      macroIn100={product.carb}
                     />
                   </Col>
                   <Col xs={12} sm={6} lg={3}>
@@ -92,7 +92,7 @@ const ProductEntryAddForm = ({
                       suffix="g"
                       name="fat"
                       value={values.fat}
-                      macroIn100={product.fat_for_100}
+                      macroIn100={product.fat}
                     />
                   </Col>
                 </Row>

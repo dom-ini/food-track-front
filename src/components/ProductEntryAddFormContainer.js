@@ -34,13 +34,6 @@ const ProductEntryAddFormContainer = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const data = {
-    kcal: product.kcal_for_100,
-    protein: product.protein_for_100,
-    carb: product.carbo_for_100,
-    fat: product.fat_for_100,
-  };
-
   const axiosPrivate = useAxiosPrivate();
   const alert = useAlert();
   const setFormErrors = useFormErrorHandler();
@@ -75,7 +68,7 @@ const ProductEntryAddFormContainer = ({
     <>
       <MealEntry
         name={product.name}
-        data={data}
+        data={product}
         button={
           <Button
             variant="primary"

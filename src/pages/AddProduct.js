@@ -17,37 +17,37 @@ const BASE_MACRO_VALIDATION = number()
 const FORM_FIELDS = [
   { name: "name", type: "text", label: "Nazwa produktu" },
   {
-    name: "kcal_for_100",
+    name: "kcal",
     type: "number",
     label: "Kcal (kcal/100g)",
     suffix: "kcal",
   },
   {
-    name: "protein_for_100",
+    name: "protein",
     type: "number",
     label: "Białko (g/100g)",
     suffix: "g",
   },
   {
-    name: "carbo_for_100",
+    name: "carb",
     type: "number",
     label: "Węglowodany (g/100g)",
     suffix: "g",
   },
   {
-    name: "sugar_for_100",
+    name: "sugar",
     type: "number",
     label: "Cukry (g/100g)",
     suffix: "g",
   },
   {
-    name: "fat_for_100",
+    name: "fat",
     type: "number",
     label: "Tłuszcze (g/100g)",
     suffix: "g",
   },
   {
-    name: "saturated_fat_for_100",
+    name: "saturated_fat",
     type: "number",
     label: "Tłuszcze nasycone (g/100g)",
     suffix: "g",
@@ -57,23 +57,23 @@ const FORM_FIELDS = [
 
 const validationSchema = object().shape({
   name: string().required("Nazwa jest wymagana").max(128, "Nazwa zbyt długa"),
-  kcal_for_100: BASE_MACRO_VALIDATION,
-  protein_for_100: BASE_MACRO_VALIDATION,
-  carbo_for_100: BASE_MACRO_VALIDATION,
-  sugar_for_100: BASE_MACRO_VALIDATION,
-  fat_for_100: BASE_MACRO_VALIDATION,
-  saturated_fat_for_100: BASE_MACRO_VALIDATION,
+  kcal: BASE_MACRO_VALIDATION,
+  protein: BASE_MACRO_VALIDATION,
+  carb: BASE_MACRO_VALIDATION,
+  sugar: BASE_MACRO_VALIDATION,
+  fat: BASE_MACRO_VALIDATION,
+  saturated_fat: BASE_MACRO_VALIDATION,
   portion_size: BASE_MACRO_VALIDATION,
 });
 
 const initialValues = {
   name: "",
-  kcal_for_100: 0,
-  protein_for_100: 0,
-  carbo_for_100: 0,
-  sugar_for_100: 0,
-  fat_for_100: 0,
-  saturated_fat_for_100: 0,
+  kcal: 0,
+  protein: 0,
+  carb: 0,
+  sugar: 0,
+  fat: 0,
+  saturated_fat: 0,
   portion_size: 0,
 };
 

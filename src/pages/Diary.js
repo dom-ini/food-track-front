@@ -73,21 +73,25 @@ const Diary = () => {
 
   useEffect(() => {
     const transformEntriesData = () => {
-      const entriesByMealTemp = createObjectFromTemplate(ENTRIES_BY_MEAL_TEMPLATE);
-      const macrosByMealTemp = createObjectFromTemplate(MACROS_BY_MEAL_TEMPLATE);
+      const entriesByMealTemp = createObjectFromTemplate(
+        ENTRIES_BY_MEAL_TEMPLATE
+      );
+      const macrosByMealTemp = createObjectFromTemplate(
+        MACROS_BY_MEAL_TEMPLATE
+      );
       const macrosEatenTemp = createObjectFromTemplate(MACROS_EATEN_TEMPLATE);
 
       diaryEntries.forEach((item) => {
         const entryId = item.id;
         const entry = item.entry;
         const mealId = item.meal;
-        const weight = parseFloat(entry.weight);
+        const weight = entry.weight;
         const { kcal, protein, fat, carb } = calculateMacrosByWeight(
           weight,
-          parseFloat(entry.product.kcal_for_100),
-          parseFloat(entry.product.protein_for_100),
-          parseFloat(entry.product.fat_for_100),
-          parseFloat(entry.product.carbo_for_100)
+          entry.product.kcal,
+          entry.product.protein,
+          entry.product.fat,
+          entry.product.carb
         );
 
         const transformedEntry = {

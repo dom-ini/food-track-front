@@ -6,7 +6,6 @@ import ProductSearch from "./ProductSearch";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 
-import { convertArrayOfObjectsPropsToFloat } from "../globals/utils";
 import ENDPOINTS from "../globals/endpoints";
 
 const ProductEntryAddContainer = ({
@@ -33,16 +32,7 @@ const ProductEntryAddContainer = ({
             name__icontains: search,
           },
         });
-        const products = convertArrayOfObjectsPropsToFloat(
-          response.data?.results,
-          [
-            "kcal_for_100",
-            "protein_for_100",
-            "carbo_for_100",
-            "fat_for_100",
-            "portion_size",
-          ]
-        );
+        const products = response.data?.results;
         setNext(response.data.next);
         setIsLoading(false);
         return products;
