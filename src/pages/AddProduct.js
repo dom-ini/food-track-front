@@ -35,24 +35,11 @@ const FORM_FIELDS = [
     suffix: "g",
   },
   {
-    name: "sugar",
-    type: "number",
-    label: "Cukry (g/100g)",
-    suffix: "g",
-  },
-  {
     name: "fat",
     type: "number",
     label: "Tłuszcze (g/100g)",
     suffix: "g",
   },
-  {
-    name: "saturated_fat",
-    type: "number",
-    label: "Tłuszcze nasycone (g/100g)",
-    suffix: "g",
-  },
-  { name: "portion_size", type: "number", label: "Porcja", suffix: "g" },
 ];
 
 const validationSchema = object().shape({
@@ -60,10 +47,7 @@ const validationSchema = object().shape({
   kcal: BASE_MACRO_VALIDATION,
   protein: BASE_MACRO_VALIDATION,
   carb: BASE_MACRO_VALIDATION,
-  sugar: BASE_MACRO_VALIDATION,
   fat: BASE_MACRO_VALIDATION,
-  saturated_fat: BASE_MACRO_VALIDATION,
-  portion_size: BASE_MACRO_VALIDATION,
 });
 
 const initialValues = {
@@ -71,10 +55,7 @@ const initialValues = {
   kcal: 0,
   protein: 0,
   carb: 0,
-  sugar: 0,
   fat: 0,
-  saturated_fat: 0,
-  portion_size: 0,
 };
 
 const AddProduct = () => {
