@@ -1,13 +1,11 @@
 import { useEffect } from "react";
-import { Form, InputGroup } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useFormikContext } from "formik";
 
 import { calculateMacro } from "../globals/utils";
 
-const MacroCalculatedField = ({
-  label,
+const MacroCalculatedFormControl = ({
   name,
-  suffix,
   inputValue,
   baseValue,
   percentage,
@@ -23,15 +21,7 @@ const MacroCalculatedField = ({
     );
   }, [baseValue, percentage, multiplier, name, setFieldValue]);
 
-  return (
-    <>
-      <Form.Label>{label}</Form.Label>
-      <InputGroup>
-        <Form.Control disabled name={name} value={inputValue} />
-        <InputGroup.Text>{suffix}</InputGroup.Text>
-      </InputGroup>
-    </>
-  );
+  return <Form.Control disabled name={name} value={inputValue} />;
 };
 
-export default MacroCalculatedField;
+export default MacroCalculatedFormControl;

@@ -1,8 +1,8 @@
 import { Formik } from "formik";
 import { Form, Row, Col, Button, Container, Collapse } from "react-bootstrap";
 
-import MacroCalculatedField from "./MacroCalculatedField";
-import MacroFormField from "./MacroFormField";
+import MacroCalculatedFormControl from "./MacroCalculatedFormControl";
+import FormField from "./FormField";
 
 import "../styles/ProductEntryFormBox.scss";
 
@@ -12,7 +12,7 @@ const ProductEntryAddForm = ({
   isLoading,
   initialValues,
   validationSchema,
-  handleFormSubmit
+  handleFormSubmit,
 }) => {
   return (
     <Collapse in={isOpen}>
@@ -39,9 +39,10 @@ const ProductEntryAddForm = ({
               <Container>
                 <Row className="pb-3 d-flex justify-content-center">
                   <Col xs={6} sm={4} md={3}>
-                    <MacroFormField
+                    <FormField
                       label="Waga (g)"
                       suffix="g"
+                      type="number"
                       name="weight"
                       placeholder="Waga"
                       value={values.weight}
@@ -60,43 +61,63 @@ const ProductEntryAddForm = ({
                 </Row>
                 <Row className="gy-3">
                   <Col xs={12} sm={6} lg={3}>
-                    <MacroCalculatedField
+                    <FormField
                       label="kcal"
                       name="kcal"
                       suffix="kcal"
-                      inputValue={values.kcal}
-                      baseValue={values.weight}
-                      percentage={product.kcal}
+                      customInput={
+                        <MacroCalculatedFormControl
+                          name="kcal"
+                          inputValue={values.kcal}
+                          baseValue={values.weight}
+                          percentage={product.kcal}
+                        />
+                      }
                     />
                   </Col>
                   <Col xs={12} sm={6} lg={3}>
-                    <MacroCalculatedField
+                    <FormField
                       label="Białko (g)"
                       name="protein"
                       suffix="g"
-                      inputValue={values.protein}
-                      baseValue={values.weight}
-                      percentage={product.protein}
+                      customInput={
+                        <MacroCalculatedFormControl
+                          name="protein"
+                          inputValue={values.protein}
+                          baseValue={values.weight}
+                          percentage={product.protein}
+                        />
+                      }
                     />
                   </Col>
                   <Col xs={12} sm={6} lg={3}>
-                    <MacroCalculatedField
+                    <FormField
                       label="Węglowodany (g)"
                       name="carb"
                       suffix="g"
-                      inputValue={values.carb}
-                      baseValue={values.weight}
-                      percentage={product.carb}
+                      customInput={
+                        <MacroCalculatedFormControl
+                          name="carb"
+                          inputValue={values.carb}
+                          baseValue={values.weight}
+                          percentage={product.carb}
+                        />
+                      }
                     />
                   </Col>
                   <Col xs={12} sm={6} lg={3}>
-                    <MacroCalculatedField
+                    <FormField
                       label="Tłuszcze (g)"
                       name="fat"
                       suffix="g"
-                      inputValue={values.fat}
-                      baseValue={values.weight}
-                      percentage={product.fat}
+                      customInput={
+                        <MacroCalculatedFormControl
+                          name="fat"
+                          inputValue={values.fat}
+                          baseValue={values.weight}
+                          percentage={product.fat}
+                        />
+                      }
                     />
                   </Col>
                 </Row>

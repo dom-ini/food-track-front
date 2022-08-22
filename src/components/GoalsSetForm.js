@@ -1,8 +1,8 @@
 import { Formik } from "formik";
 import { Form, Button, Row, Col, Spinner } from "react-bootstrap";
 
-import MacroCalculatedField from "../components/MacroCalculatedField";
-import MacroFormField from "./MacroFormField";
+import MacroCalculatedFormControl from "./MacroCalculatedFormControl";
+import FormField from "./FormField";
 
 import { MACRO_TO_KCAL } from "../globals/constants";
 
@@ -36,15 +36,11 @@ const GoalsSetForm = ({
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
                 <Row>
-                  <Form.Group
-                    controlId="formKcal"
-                    className="mb-2 mx-auto"
-                    as={Col}
-                    xs={6}
-                    sm={5}
-                  >
-                    <MacroFormField
+                  <Col xs={6} sm={5} className="mx-auto">
+                    <FormField
                       label="Zapotrzebowanie"
+                      className="mb-2"
+                      type="number"
                       suffix="kcal"
                       name="daily_kcal_goal"
                       placeholder="kcal"
@@ -57,99 +53,111 @@ const GoalsSetForm = ({
                       }
                       errors={errors?.daily_kcal_goal}
                     />
-                  </Form.Group>
-                </Row>
-                <Row className="justify-content-around">
-                  <Col xs={6} sm={5}>
-                    <Form.Group controlId="formProteinPerc" className="mb-2">
-                      <MacroFormField
-                        label="Białko (%)"
-                        suffix="%"
-                        name="protein_perc"
-                        placeholder="Ilość białka (%)"
-                        value={values.protein_perc}
-                        disabled={isSubmitting}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isInvalid={touched.protein_perc && errors?.protein_perc}
-                        errors={errors?.protein_perc}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col xs={6} sm={5}>
-                    <Form.Group controlId="formProteinAbs" className="mb-2">
-                      <MacroCalculatedField
-                        label="Białko (g)"
-                        name="protein_abs"
-                        suffix="g"
-                        inputValue={values.protein_abs}
-                        baseValue={values.daily_kcal_goal}
-                        percentage={values.protein_perc}
-                        multiplier={MACRO_TO_KCAL.PROTEIN}
-                      />
-                    </Form.Group>
                   </Col>
                 </Row>
                 <Row className="justify-content-around">
                   <Col xs={6} sm={5}>
-                    <Form.Group controlId="formFatPerc" className="mb-2">
-                      <MacroFormField
-                        label="Tłuszcze (%)"
-                        suffix="%"
-                        name="fat_perc"
-                        placeholder="Ilość tłuszczów (%)"
-                        value={values.fat_perc}
-                        disabled={isSubmitting}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isInvalid={touched.fat_perc && errors?.fat_perc}
-                        errors={errors?.fat_perc}
-                      />
-                    </Form.Group>
+                    <FormField
+                      label="Białko (%)"
+                      className="mb-2"
+                      type="number"
+                      suffix="%"
+                      name="protein_perc"
+                      placeholder="Ilość białka (%)"
+                      value={values.protein_perc}
+                      disabled={isSubmitting}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isInvalid={touched.protein_perc && errors?.protein_perc}
+                      errors={errors?.protein_perc}
+                    />
                   </Col>
                   <Col xs={6} sm={5}>
-                    <Form.Group controlId="formFatAbs" className="mb-2">
-                      <MacroCalculatedField
-                        label="Tłuszcze (g)"
-                        name="fat_abs"
-                        suffix="g"
-                        inputValue={values.fat_abs}
-                        baseValue={values.daily_kcal_goal}
-                        percentage={values.fat_perc}
-                        multiplier={MACRO_TO_KCAL.FAT}
-                      />
-                    </Form.Group>
+                    <FormField
+                      label="Białko (g)"
+                      className="mb-2"
+                      name="protein_abs"
+                      suffix="g"
+                      customInput={
+                        <MacroCalculatedFormControl
+                          name="protein_abs"
+                          inputValue={values.protein_abs}
+                          baseValue={values.daily_kcal_goal}
+                          percentage={values.protein_perc}
+                          multiplier={MACRO_TO_KCAL.PROTEIN}
+                        />
+                      }
+                    />
                   </Col>
                 </Row>
                 <Row className="justify-content-around">
                   <Col xs={6} sm={5}>
-                    <Form.Group controlId="formCarbPerc" className="mb-2">
-                      <MacroFormField
-                        label="Węglowodany (%)"
-                        suffix="%"
-                        name="carb_perc"
-                        placeholder="Ilość węglodowanów (%)"
-                        value={values.carb_perc}
-                        disabled={isSubmitting}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        isInvalid={touched.carb_perc && errors?.carb_perc}
-                        errors={errors?.carb_perc}
-                      />
-                    </Form.Group>
+                    <FormField
+                      label="Tłuszcze (%)"
+                      className="mb-2"
+                      type="number"
+                      suffix="%"
+                      name="fat_perc"
+                      placeholder="Ilość tłuszczów (%)"
+                      value={values.fat_perc}
+                      disabled={isSubmitting}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isInvalid={touched.fat_perc && errors?.fat_perc}
+                      errors={errors?.fat_perc}
+                    />
                   </Col>
                   <Col xs={6} sm={5}>
-                    <Form.Group controlId="formCarbAbs" className="mb-2">
-                      <MacroCalculatedField
-                        label="Węglowodany (g)"
-                        name="carb_abs"
-                        suffix="g"
-                        inputValue={values.carb_abs}
-                        baseValue={values.daily_kcal_goal}
-                        percentage={values.carb_perc}
-                        multiplier={MACRO_TO_KCAL.CARB}
-                      />
-                    </Form.Group>
+                    <FormField
+                      label="Tłuszcze (g)"
+                      className="mb-2"
+                      name="fat_abs"
+                      suffix="g"
+                      customInput={
+                        <MacroCalculatedFormControl
+                          name="fat_abs"
+                          inputValue={values.fat_abs}
+                          baseValue={values.daily_kcal_goal}
+                          percentage={values.fat_perc}
+                          multiplier={MACRO_TO_KCAL.FAT}
+                        />
+                      }
+                    />
+                  </Col>
+                </Row>
+                <Row className="justify-content-around">
+                  <Col xs={6} sm={5}>
+                    <FormField
+                      label="Węglowodany (%)"
+                      className="mb-2"
+                      type="number"
+                      suffix="%"
+                      name="carb_perc"
+                      placeholder="Ilość węglodowanów (%)"
+                      value={values.carb_perc}
+                      disabled={isSubmitting}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isInvalid={touched.carb_perc && errors?.carb_perc}
+                      errors={errors?.carb_perc}
+                    />
+                  </Col>
+                  <Col xs={6} sm={5}>
+                    <FormField
+                      label="Węglowodany (g)"
+                      className="mb-2"
+                      name="carb_abs"
+                      suffix="g"
+                      customInput={
+                        <MacroCalculatedFormControl
+                          name="carb_abs"
+                          inputValue={values.carb_abs}
+                          baseValue={values.daily_kcal_goal}
+                          percentage={values.carb_perc}
+                          multiplier={MACRO_TO_KCAL.CARB}
+                        />
+                      }
+                    />
                   </Col>
                 </Row>
                 <p

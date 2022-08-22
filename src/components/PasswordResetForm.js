@@ -2,7 +2,8 @@ import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 
-import PasswordRequirementsInput from "../components/PasswordRequirementsInput";
+import PasswordRequirementsFormControl from "../components/PasswordRequirementsFormControl";
+import FormField from "./FormField";
 
 const PasswordResetForm = ({
   isSuccess,
@@ -42,38 +43,34 @@ const PasswordResetForm = ({
               isSubmitting,
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
-                <Form.Group controlId="formPassword1" className="mb-2">
-                  <Form.Label hidden>Nowe hasło</Form.Label>
-                  <PasswordRequirementsInput
-                    name="new_password1"
-                    placeholder="Nowe hasło"
-                    value={values.new_password1}
-                    disabled={isSubmitting}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={touched.new_password1 && errors?.new_password1}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors?.new_password1}
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group controlId="formPassword2" className="mb-2">
-                  <Form.Label hidden>Powtórz nowe hasło</Form.Label>
-                  <Form.Control
-                    type="password"
-                    name="new_password2"
-                    placeholder="Powtórz nowe hasło"
-                    autoComplete="off"
-                    value={values.new_password2}
-                    disabled={isSubmitting}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={touched.new_password2 && errors?.new_password2}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors?.new_password2}
-                  </Form.Control.Feedback>
-                </Form.Group>
+                <FormField
+                  className="mb-2"
+                  name="new_password1"
+                  errors={errors?.new_password1}
+                  customInput={
+                    <PasswordRequirementsFormControl
+                      name="new_password1"
+                      placeholder="Nowe hasło"
+                      value={values.new_password1}
+                      disabled={isSubmitting}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isInvalid={touched.new_password1 && errors?.new_password1}
+                    />
+                  }
+                />
+                <FormField
+                  className="mb-2"
+                  type="password"
+                  name="new_password2"
+                  placeholder="Powtórz nowe hasło"
+                  value={values.new_password2}
+                  disabled={isSubmitting}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isInvalid={touched.new_password2 && errors?.new_password2}
+                  errors={errors?.new_password2}
+                />
                 <Button
                   variant="primary"
                   type="submit"

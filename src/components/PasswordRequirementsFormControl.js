@@ -26,7 +26,7 @@ const REQUIREMENTS_MESSAGES = [
   },
 ];
 
-const PasswordRequirementsInput = ({
+const PasswordRequirementsFormControl = ({
   name,
   placeholder,
   value,
@@ -72,4 +72,4 @@ const PasswordRequirementsInput = ({
   );
 };
 
-export default PasswordRequirementsInput;
+export default PasswordRequirementsFormControl;

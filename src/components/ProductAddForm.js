@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import { Button, Form } from "react-bootstrap";
 
-import ProductAddFormField from "../components/ProductAddFormField";
+import FormField from "./FormField";
 
 const ProductAddForm = ({
   formFields,
@@ -28,8 +28,9 @@ const ProductAddForm = ({
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
             {formFields.map((field, i) => (
-              <ProductAddFormField
+              <FormField
                 key={i}
+                className="mb-2"
                 type={field.type}
                 name={field.name}
                 label={field.label}

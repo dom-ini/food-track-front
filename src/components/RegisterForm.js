@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { Formik } from "formik";
 
-import PasswordRequirementsInput from "../components/PasswordRequirementsInput";
+import PasswordRequirementsFormControl from "./PasswordRequirementsFormControl";
+import FormField from "./FormField";
 
 const RegisterForm = ({
   isSuccess,
@@ -42,54 +43,46 @@ const RegisterForm = ({
               isSubmitting,
             }) => (
               <Form noValidate onSubmit={handleSubmit}>
-                <Form.Group controlId="formEmail" className="mb-2">
-                  <Form.Label hidden>Adres e-mail</Form.Label>
-                  <Form.Control
-                    name="email"
-                    type="email"
-                    placeholder="Adres e-mail"
-                    value={values.email}
-                    disabled={isSubmitting}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={touched.email && errors?.email}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors?.email}
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group controlId="formPassword1" className="mb-2">
-                  <Form.Label hidden>Hasło</Form.Label>
-                  <PasswordRequirementsInput
-                    name="password1"
-                    placeholder="Hasło"
-                    value={values.password1}
-                    disabled={isSubmitting}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={touched.password1 && errors?.password1}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors?.password1}
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group controlId="formPassword2" className="mb-2">
-                  <Form.Label hidden>Powtórz hasło</Form.Label>
-                  <Form.Control
-                    type="password"
-                    name="password2"
-                    placeholder="Powtórz hasło"
-                    autoComplete="off"
-                    value={values.password2}
-                    disabled={isSubmitting}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    isInvalid={touched.password2 && errors?.password2}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors?.password2}
-                  </Form.Control.Feedback>
-                </Form.Group>
+                <FormField
+                  className="mb-2"
+                  type="email"
+                  name="email"
+                  placeholder="Adres e-mail"
+                  value={values.email}
+                  disabled={isSubmitting}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isInvalid={touched.email && errors?.email}
+                  errors={errors?.email}
+                />
+                <FormField
+                  className="mb-2"
+                  name="password1"
+                  errors={errors?.password1}
+                  customInput={
+                    <PasswordRequirementsFormControl
+                      name="password1"
+                      placeholder="Hasło"
+                      value={values.password1}
+                      disabled={isSubmitting}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isInvalid={touched.password1 && errors?.password1}
+                    />
+                  }
+                />
+                <FormField
+                  className="mb-2"
+                  type="password"
+                  name="password2"
+                  placeholder="Powtórz hasło"
+                  value={values.password2}
+                  disabled={isSubmitting}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isInvalid={touched.password2 && errors?.password2}
+                  errors={errors?.password2}
+                />
                 <Button
                   variant="primary"
                   type="submit"

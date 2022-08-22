@@ -2,6 +2,8 @@ import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 
+import FormField from "./FormField";
+
 const LoginForm = ({ initialValues, validationSchema, handleFormSubmit }) => {
   return (
     <div>
@@ -21,39 +23,30 @@ const LoginForm = ({ initialValues, validationSchema, handleFormSubmit }) => {
           isSubmitting,
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
-            <Form.Group controlId="formEmail" className="mb-2">
-              <Form.Label hidden>Adres e-mail</Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
-                placeholder="Adres e-mail"
-                value={values.email}
-                disabled={isSubmitting}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                isInvalid={touched.email && errors?.email}
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors?.email}
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group controlId="formPassword" className="mb-2">
-              <Form.Label hidden>Hasło</Form.Label>
-              <Form.Control
-                type="password"
-                name="password"
-                placeholder="Hasło"
-                autoComplete="off"
-                value={values.password}
-                disabled={isSubmitting}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                isInvalid={touched.password && errors?.password}
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors?.password}
-              </Form.Control.Feedback>
-            </Form.Group>
+            <FormField
+              className="mb-2"
+              type="email"
+              name="email"
+              placeholder="Adres e-mail"
+              value={values.email}
+              disabled={isSubmitting}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              isInvalid={touched.email && errors?.email}
+              errors={errors?.email}
+            />
+            <FormField
+              className="mb-2"
+              type="password"
+              name="password"
+              placeholder="Hasło"
+              value={values.password}
+              disabled={isSubmitting}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              isInvalid={touched.password && errors?.password}
+              errors={errors?.password}
+            />
             <Link to="/resetuj-haslo" className="d-block mb-2 link-primary">
               Zapomniałem hasła
             </Link>
