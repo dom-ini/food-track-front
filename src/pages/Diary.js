@@ -152,7 +152,6 @@ const Diary = () => {
         setSelectedDay={setSelectedDay}
       />
       <DiaryEntriesContainer
-        selectedDay={selectedDay}
         entries={entriesByMeal}
         mealMacros={macrosByMeal}
         deleteEntry={handleEntryDelete}
