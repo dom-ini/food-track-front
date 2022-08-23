@@ -1,8 +1,11 @@
 import { Col, Row } from "react-bootstrap";
 
 const MealEntry = ({ name, data, variant, button, className }) => {
+  const boxVariant = variant || "light";
+  const boxClassName = className || "";
+
   return (
-    <div className={`meal-box meal-box-${variant} ${className}`}>
+    <div className={`meal-box meal-box-${boxVariant} ${boxClassName}`}>
       <div className="meal-data-container">
         <h4 className="mb-1">{name}</h4>
         <div className="d-flex">
