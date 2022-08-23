@@ -4,7 +4,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import Logo from "../components/Logo";
 
-import "../styles/NotLoggedInLayout.scss";
+import "../styles/layouts/NotLoggedInLayout.scss";
 
 const NotLoggedInLayout = () => {
   const location = useLocation();

@@ -3,7 +3,7 @@ import { GoPlus, GoDash } from "react-icons/go";
 
 import MealEntry from "./MealEntry";
 
-import "../styles/MealContainer.scss";
+import "../styles/components/MealEntriesContainer.scss";
 
 const MealEntriesContainer = ({
   mealName,

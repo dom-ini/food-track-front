@@ -4,7 +4,7 @@ import { Form, Row, Col, Button, Container, Collapse } from "react-bootstrap";
 import MacroCalculatedFormControl from "./MacroCalculatedFormControl";
 import FormField from "./FormField";
 
-import "../styles/ProductEntryFormBox.scss";
+import "../styles/components/ProductEntryAddForm.scss";
 
 const ProductEntryAddForm = ({
   isOpen,

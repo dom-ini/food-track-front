@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 
-import "../styles/GoalDisplayer.scss";
+import "../styles/components/GoalProgress.scss";
 
 const GoalProgress = ({
   className,

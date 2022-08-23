@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import { FaCopyright } from "react-icons/fa";
 
-import "../styles/Footer.scss";
+import "../styles/layouts/Footer.scss";
 
 const Footer = () => {
   return (

@@ -4,7 +4,7 @@ import { Button, Container, Row, Col, Image } from "react-bootstrap";
 import useAuth from "../hooks/useAuth";
 
 import missingImg from "../assets/img/404.png";
-import "../styles/Missing404.scss";
+import "../styles/layouts/Missing404.scss";
 
 const Missing404 = () => {
   const { isLoggedIn } = useAuth();

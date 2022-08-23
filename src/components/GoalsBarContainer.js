@@ -10,8 +10,6 @@ import { calculateMacro } from "../globals/utils";
 import { MACRO_TO_KCAL } from "../globals/constants";
 import ENDPOINTS from "../globals/endpoints";
 
-import "../styles/GoalsContainer.scss";
-
 const GoalsBarContainer = ({ date, macrosEaten }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [goals, setGoals] = useState({});

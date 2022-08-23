@@ -5,7 +5,7 @@ import GoalProgress from "./GoalProgress";
 
 import { SMALL_SCREEN_BREAKPOINT } from "../globals/constants";
 
-import "../styles/GoalsContainer.scss";
+import "../styles/components/GoalsBar.scss";
 
 const MACROS = {
     kcal: { label: "kcal", color: "green" },

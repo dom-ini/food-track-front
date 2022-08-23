@@ -4,7 +4,7 @@ import ProductEntryAddFormContainer from "./ProductEntryAddFormContainer";
 
 import useWindowSize from "../hooks/useWindowSize";
 
-import "../styles/EntryAddContainer.scss";
+import "../styles/components/ProductEntryAdd.scss";
 
 const ProductEntryAdd = ({
   products,

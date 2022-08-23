@@ -4,7 +4,7 @@ import MealEntriesContainer from "./MealEntriesContainer";
 
 import { MEALS } from "../globals/constants";
 
-import "../styles/DiaryEntriesContainer.scss";
+import "../styles/components/DiaryEntriesContainer.scss";
 
 const DiaryEntriesContainer = ({ entries, mealMacros, deleteEntry, openModal }) => {
   return (

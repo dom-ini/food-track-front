@@ -8,7 +8,7 @@ import Logo from "../components/Logo";
 import useWindowSize from "../hooks/useWindowSize";
 import useAuth from "../hooks/useAuth";
 
-import "../styles/Header.scss";
+import "../styles/layouts/Header.scss";
 
 const Header = () => {
   const [show, setShow] = useState(false);

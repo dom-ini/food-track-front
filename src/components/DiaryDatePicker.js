@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { isEqual, isToday } from "date-fns";
 
-import "../styles/DiaryDatePicker.scss";
+import "../styles/components/DiaryDatePicker.scss";
 
 const DiaryDatePicker = ({
   selectedDay,
