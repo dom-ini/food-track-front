@@ -12,6 +12,7 @@ const VISIBLE_DAYS = window.innerWidth < SMALL_SCREEN_BREAKPOINT ? 5 : 7;
 
 const DiaryDatePickerContainer = ({ selectedDay, setSelectedDay }) => {
   const [visibleDays, setVisibleDays] = useState([]);
+  const [isCalendarVisible, setIsCalendarVisible] = useState(false);
 
   const updateVisibleDays = (initialDate) => {
     const datesRange = eachDayOfInterval({
@@ -32,7 +33,16 @@ const DiaryDatePickerContainer = ({ selectedDay, setSelectedDay }) => {
   };
 
   const handleDayPick = (date) => {
-    if (!isEqual(date, selectedDay)) setSelectedDay(date);
+    if (isEqual(date, selectedDay)) {
+      setIsCalendarVisible(true);
+    } else {
+      setSelectedDay(date);
+    }
+  };
+
+  const handleCalendarDayPick = (date) => {
+    setIsCalendarVisible(false);
+    setSelectedDay(date);
   };
 
   useEffect(() => {
@@ -57,6 +67,9 @@ const DiaryDatePickerContainer = ({ selectedDay, setSelectedDay }) => {
       handleDayPick={handleDayPick}
       leftBtnAction={() => changeVisibleDaysRangeBy(-VISIBLE_DAYS)}
       rightBtnAction={() => changeVisibleDaysRangeBy(VISIBLE_DAYS)}
+      isCalendarVisible={isCalendarVisible}
+      setIsCalendarVisible={setIsCalendarVisible}
+      handleCalendarDayPick={handleCalendarDayPick}
     />
   );
 };
