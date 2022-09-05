@@ -68,7 +68,7 @@ const DiaryDatePicker = ({
         minDetail="year"
         onClickDay={handleCalendarDayPick}
         className={isCalendarVisible ? null : "d-none"}
-        defaultValue={selectedDay}
+        value={selectedDay}
         inputRef={calendarRef}
       />
     </>
