@@ -94,6 +94,12 @@ export const AuthProvider = ({ children }) => {
       .then((response) => {});
   };
 
+  const resendVerificationEmail = async ({ email }) => {
+    return await axios
+      .post(ENDPOINTS.RESEND_VERIFY_EMAIL_URL, { email })
+      .then((response) => {});
+  };
+
   const resetPassword = async ({
     new_password1,
     new_password2,
@@ -125,6 +131,7 @@ export const AuthProvider = ({ children }) => {
         resetPasswordRequest,
         resetPassword,
         verifyEmail,
+        resendVerificationEmail,
       }}
     >
       {children}

@@ -4,6 +4,8 @@ import { Formik } from "formik";
 
 import FormField from "./FormField";
 
+import "../styles/components/LoginForm.scss";
+
 const LoginForm = ({ initialValues, validationSchema, handleFormSubmit }) => {
   return (
     <div>
@@ -66,6 +68,9 @@ const LoginForm = ({ initialValues, validationSchema, handleFormSubmit }) => {
         <Button variant="outline-primary" className="w-100">
           Załóż konto
         </Button>
+      </Link>
+      <Link to="/aktywuj-konto/wyslij-link" className="d-block mt-2 link-primary">
+        Wyślij ponownie link aktywacyjny
       </Link>
     </div>
   );

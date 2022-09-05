@@ -9,6 +9,7 @@ const ENDPOINTS = {
   RESET_PASSWORD_REQUEST_URL: "/auth/password/reset/",
   RESET_PASSWORD_URL: "/auth/password/reset/confirm/",
   VERIFY_EMAIL_URL: "/auth/verify-email/",
+  RESEND_VERIFY_EMAIL_URL: "/auth/registration/resend-email/",
 };
 
 export default ENDPOINTS;

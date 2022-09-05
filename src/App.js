@@ -8,6 +8,7 @@ import Account from "./pages/Account";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ConfirmEmail from "./pages/ConfirmEmail";
+import ResendVerificationEmail from "./pages/ResendVerificationEmail";
 import RequestPasswordReset from "./pages/RequestPasswordReset";
 import ResetPassword from "./pages/ResetPassword";
 import SetGoals from "./pages/SetGoals";
@@ -26,6 +27,7 @@ function App() {
             <Route path="logowanie" element={<Login />} />
             <Route path="rejestracja" element={<Register />} />
             <Route path="aktywuj-konto/:key" element={<ConfirmEmail />} />
+            <Route path="aktywuj-konto/wyslij-link" element={<ResendVerificationEmail />} />
             <Route path="resetuj-haslo" element={<RequestPasswordReset />} />
             <Route
               path="resetuj-haslo/:uid/:token"
