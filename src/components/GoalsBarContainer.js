@@ -6,7 +6,7 @@ import GoalsBar from "./GoalsBar";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 
-import { calculateMacro } from "../globals/utils";
+import { calculateMacro } from "../utils/utils";
 import { MACRO_TO_KCAL } from "../globals/constants";
 import ENDPOINTS from "../globals/endpoints";
 

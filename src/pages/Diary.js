@@ -9,7 +9,7 @@ import GoalsBarContainer from "../components/GoalsBarContainer";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
 
-import { createObjectFromTemplate, calculateMacro } from "../globals/utils";
+import { createObjectFromTemplate, calculateMacro } from "../utils/utils";
 import ENDPOINTS from "../globals/endpoints";
 import {
   ENTRIES_BY_MEAL_TEMPLATE,

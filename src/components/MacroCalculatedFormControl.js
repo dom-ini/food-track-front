@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useFormikContext } from "formik";
 
-import { calculateMacro } from "../globals/utils";
+import { calculateMacro } from "../utils/utils";
 
 const MacroCalculatedFormControl = ({
   name,
