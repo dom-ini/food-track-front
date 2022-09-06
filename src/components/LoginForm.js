@@ -8,8 +8,6 @@ import FormField from "./FormField";
 
 import "../styles/components/LoginForm.scss";
 
-const facebookAppId = process.env.REACT_APP_FACEBOOK_APP_ID;
-
 const LoginForm = ({
   initialValues,
   validationSchema,
@@ -86,7 +84,6 @@ const LoginForm = ({
             </Link>
             <Separator content="lub" className="mt-2" />
             <FacebookLogin
-              appId={facebookAppId}
               onTokenObtain={(token) =>
                 loginByFacebook(
                   { token },
