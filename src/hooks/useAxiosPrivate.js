@@ -34,7 +34,7 @@ const useAxiosPrivate = () => {
           navigate("/logowanie");
         }
 
-        if (error?.response?.status === 401 && !prevRequest?.sent) {
+        if ([401, 403].includes(error?.response?.status) && !prevRequest?.sent) {
           prevRequest.sent = true;
 
           const newAccessToken = await refresh();
