@@ -12,16 +12,13 @@ const NotLoggedInLayout = () => {
   return (
     <Container className="pt-5">
       <Row className="box-wrapper mx-auto">
-        <Col sm={7} md={6} className="dynamic-content">
+        <Col xs={12} className="dynamic-content">
           <Link to="/logowanie">
-            <Logo
-              height="100"
-              className="d-block mx-auto mb-3"
-            />
+            <Logo height="100" className="d-block mx-auto mb-3" />
           </Link>
-          <TransitionGroup> 
+          <TransitionGroup>
             <CSSTransition
-              key={location.pathname.split('/')[1] || '/'}
+              key={location.pathname.split("/")[1] || "/"}
               timeout={300}
               classNames="slider"
             >
@@ -29,11 +26,6 @@ const NotLoggedInLayout = () => {
             </CSSTransition>
           </TransitionGroup>
         </Col>
-        <Col
-          sm={5}
-          md={6}
-          className="login-img-container d-none d-sm-block"
-        ></Col>
       </Row>
     </Container>
   );
