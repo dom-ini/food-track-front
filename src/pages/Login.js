@@ -15,20 +15,29 @@ const validationSchema = object().shape({
 const initialValues = { email: "", password: "" };
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, facebookLogin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const alert = useAlert();
   const setFormErrors = useFormErrorHandler();
   const returnURL = location.state?.from?.pathname || "/";
 
-  const handleFormSubmit = async (
+  const loginByFacebook = async (values, formMethods) => {
+    await submitLoginForm(facebookLogin, values, formMethods);
+  };
+
+  const handleFormSubmit = async (values, formMethods) => {
+    await submitLoginForm(login, values, formMethods);
+  };
+
+  const submitLoginForm = async (
+    loginCallback,
     values,
     { setSubmitting, resetForm, setErrors }
   ) => {
     try {
       setSubmitting(true);
-      await login(values).then(() => {
+      await loginCallback(values).then(() => {
         resetForm();
         navigate(returnURL, { replace: true });
       });
@@ -38,11 +47,13 @@ const Login = () => {
       setSubmitting(false);
     }
   };
+
   return (
     <LoginForm
       validationSchema={validationSchema}
       initialValues={initialValues}
       handleFormSubmit={handleFormSubmit}
+      loginByFacebook={loginByFacebook}
     />
   );
 };

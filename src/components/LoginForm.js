@@ -2,11 +2,20 @@ import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 
+import FacebookLogin from "./FacebookLogin";
+import Separator from "./Separator";
 import FormField from "./FormField";
 
 import "../styles/components/LoginForm.scss";
 
-const LoginForm = ({ initialValues, validationSchema, handleFormSubmit }) => {
+const facebookAppId = process.env.REACT_APP_FACEBOOK_APP_ID;
+
+const LoginForm = ({
+  initialValues,
+  validationSchema,
+  handleFormSubmit,
+  loginByFacebook,
+}) => {
   return (
     <div>
       <h2 className="mb-3 text-center">Zaloguj się</h2>
@@ -23,6 +32,9 @@ const LoginForm = ({ initialValues, validationSchema, handleFormSubmit }) => {
           handleChange,
           handleBlur,
           isSubmitting,
+          setSubmitting,
+          setErrors,
+          resetForm,
         }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <FormField
@@ -60,18 +72,32 @@ const LoginForm = ({ initialValues, validationSchema, handleFormSubmit }) => {
             >
               Zaloguj się
             </Button>
+            <p className="mt-3 mb-2">Nie masz jeszcze konta?</p>
+            <Link to="/rejestracja">
+              <Button variant="outline-primary" className="w-100">
+                Załóż konto
+              </Button>
+            </Link>
+            <Link
+              to="/aktywuj-konto/wyslij-link"
+              className="d-block mt-2 link-primary"
+            >
+              Wyślij ponownie link aktywacyjny
+            </Link>
+            <Separator content="lub" className="mt-2" />
+            <FacebookLogin
+              appId={facebookAppId}
+              onTokenObtain={(token) =>
+                loginByFacebook(
+                  { token },
+                  { setSubmitting, resetForm, setErrors }
+                )
+              }
+              className="mt-2"
+            />
           </Form>
         )}
       </Formik>
-      <p className="mt-3 mb-2">Nie masz jeszcze konta?</p>
-      <Link to="/rejestracja">
-        <Button variant="outline-primary" className="w-100">
-          Załóż konto
-        </Button>
-      </Link>
-      <Link to="/aktywuj-konto/wyslij-link" className="d-block mt-2 link-primary">
-        Wyślij ponownie link aktywacyjny
-      </Link>
     </div>
   );
 };

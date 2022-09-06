@@ -49,11 +49,38 @@ export const AuthProvider = ({ children }) => {
       .post(ENDPOINTS.LOGIN_URL, { email, password })
       .then((response) => {
         if (response?.data?.access_token) {
-          const user = response.data;
-          AuthStorageService.setUserInStorage(user);
-          setAuth(user);
+          authenticateUser(response.data);
         }
       });
+  };
+
+  const facebookLogin = async ({ token }) => {
+    return await axios
+      .post(ENDPOINTS.FACEBOOK_LOGIN_URL, {
+        access_token: token,
+      })
+      .then((response) => {
+        if (response?.data?.access_token) {
+          authenticateUser(response.data);
+        }
+      });
+  };
+
+  const googleLogin = async ({ token }) => {
+    return await axios
+      .post(ENDPOINTS.GOOGLE_LOGIN_URL, {
+        access_token: token,
+      })
+      .then((response) => {
+        if (response?.data?.access_token) {
+          authenticateUser(response.data);
+        }
+      });
+  };
+
+  const authenticateUser = (user) => {
+    AuthStorageService.setUserInStorage(user);
+    setAuth(user);
   };
 
   const logout = () => {
@@ -125,6 +152,8 @@ export const AuthProvider = ({ children }) => {
         getAccessToken,
         getRefreshTokenValidity,
         login,
+        facebookLogin,
+        googleLogin,
         logout,
         refresh,
         register,
