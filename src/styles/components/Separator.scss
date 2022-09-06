@@ -1,0 +1,19 @@
+.separator {
+  color: gray;
+  font-size: 0.9rem;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid gray;
+  }
+
+  &:not(:empty)::before {
+    margin-right: 0.25rem;
+  }
+
+  &:not(:empty)::after {
+    margin-left: 0.25rem;
+  }
+}
