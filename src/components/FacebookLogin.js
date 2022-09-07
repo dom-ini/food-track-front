@@ -1,4 +1,6 @@
-import FacebookLoginButton from "./FacebookLoginButton";
+import { FaFacebookF } from "react-icons/fa";
+
+import SocialLoginButton from "./SocialLoginButton";
 
 const FacebookLogin = ({ onTokenObtain, className }) => {
   const onClick = () => {
@@ -18,7 +20,15 @@ const FacebookLogin = ({ onTokenObtain, className }) => {
     window.FB.login();
   };
 
-  return <FacebookLoginButton onClick={onClick} className={className} />;
+  return (
+    <SocialLoginButton
+      onClick={onClick}
+      className={className}
+      variant="facebook"
+      text="Zaloguj przez Facebook"
+      icon={<FaFacebookF className="me-3" />}
+    />
+  );
 };
 
 export default FacebookLogin;
