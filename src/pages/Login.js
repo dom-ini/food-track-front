@@ -15,7 +15,7 @@ const validationSchema = object().shape({
 const initialValues = { email: "", password: "" };
 
 const Login = () => {
-  const { login, facebookLogin } = useAuth();
+  const { login, facebookLogin, googleLogin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const alert = useAlert();
@@ -24,6 +24,10 @@ const Login = () => {
 
   const loginByFacebook = async (values, formMethods) => {
     await submitLoginForm(facebookLogin, values, formMethods);
+  };
+
+  const loginByGoogle = async (values, formMethods) => {
+    await submitLoginForm(googleLogin, values, formMethods);
   };
 
   const handleFormSubmit = async (values, formMethods) => {
@@ -54,6 +58,7 @@ const Login = () => {
       initialValues={initialValues}
       handleFormSubmit={handleFormSubmit}
       loginByFacebook={loginByFacebook}
+      loginByGoogle={loginByGoogle}
     />
   );
 };

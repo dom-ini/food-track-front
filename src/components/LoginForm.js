@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Formik } from "formik";
 
 import FacebookLogin from "./FacebookLogin";
+import GoogleLogin from "./GoogleLogin";
 import Separator from "./Separator";
 import FormField from "./FormField";
 
@@ -13,6 +14,7 @@ const LoginForm = ({
   validationSchema,
   handleFormSubmit,
   loginByFacebook,
+  loginByGoogle,
 }) => {
   return (
     <div>
@@ -91,6 +93,17 @@ const LoginForm = ({
                 )
               }
               className="mt-2"
+              disabled={isSubmitting}
+            />
+            <GoogleLogin
+              onTokenObtain={(token) =>
+                loginByGoogle(
+                  { token },
+                  { setSubmitting, resetForm, setErrors }
+                )
+              }
+              className="mt-2"
+              disabled={isSubmitting}
             />
           </Form>
         )}

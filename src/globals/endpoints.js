@@ -5,6 +5,7 @@ const ENDPOINTS = {
   PRODUCTS_URL: "/products/",
   LOGIN_URL: "/auth/login/",
   FACEBOOK_LOGIN_URL: "/auth/facebook/",
+  GOOGLE_LOGIN_URL: "/auth/google/",
   REFRESH_URL: "/auth/token/refresh/",
   REGISTER_URL: "/auth/registration/",
   RESET_PASSWORD_REQUEST_URL: "/auth/password/reset/",
