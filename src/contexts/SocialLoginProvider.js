@@ -2,9 +2,6 @@ import { createContext, useEffect, useState } from "react";
 
 const SocialLoginContext = createContext();
 
-const facebookAppId = process.env.REACT_APP_FACEBOOK_APP_ID;
-const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-
 /* global FB, google */
 
 export const SocialLoginProvider = ({ children }) => {
@@ -17,7 +14,7 @@ export const SocialLoginProvider = ({ children }) => {
   const initFacebookSdk = () => {
     window.fbAsyncInit = () => {
       FB.init({
-        appId: facebookAppId,
+        appId: process.env.REACT_APP_FACEBOOK_APP_ID,
         version: "v14.0",
       });
       setIsFacebookReady(true);
@@ -43,7 +40,7 @@ export const SocialLoginProvider = ({ children }) => {
 
   const handleGoogleLogin = (onTokenObtain) => {
     const client = google.accounts.oauth2.initTokenClient({
-      client_id: googleClientId,
+      client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
       scope: "email profile openid",
       callback: (response) => {
         onTokenObtain(response.access_token);
