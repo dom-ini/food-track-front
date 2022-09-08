@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 import { Alert } from "react-bootstrap";
 
 const AlertContext = createContext();
@@ -13,29 +13,38 @@ export const AlertProvider = ({ children }) => {
   const resetAlertTimeout = () => {
     clearTimeout(window.alertTimeout);
     window.alertTimeout = setTimeout(() => setIsVisible(false), 5000);
-  }
+  };
 
-  const show = (message, alertVariant) => {
+  const show = useCallback((message, alertVariant) => {
     resetAlertTimeout();
     setMessage(message);
     setVariant(alertVariant);
     setIsVisible(true);
-  };
+  }, []);
 
-  const danger = (message) => {
-    show(message, "danger");
-  };
+  const alertDanger = useCallback(
+    (message) => {
+      show(message, "danger");
+    },
+    [show]
+  );
 
-  const success = (message) => {
-    show(message, "primary");
-  };
+  const alertSuccess = useCallback(
+    (message) => {
+      show(message, "primary");
+    },
+    [show]
+  );
 
-  const warning = (message) => {
-    show(message, "warning");
-  }
+  const alertWarning = useCallback(
+    (message) => {
+      show(message, "warning");
+    },
+    [show]
+  );
 
   return (
-    <AlertContext.Provider value={{ danger, success, warning }}>
+    <AlertContext.Provider value={{ alertDanger, alertSuccess, alertWarning }}>
       {children}
       <Alert
         variant={variant}

@@ -32,7 +32,7 @@ const initialValues = {
 const ChangePassword = () => {
   const axiosPrivate = useAxiosPrivate();
   const setFormErrors = useFormErrorHandler();
-  const alert = useAlert();
+  const { alertDanger, alertSuccess } = useAlert();
 
   const handleFormSubmit = async (
     values,
@@ -44,10 +44,10 @@ const ChangePassword = () => {
         .post(ENDPOINTS.CHANGE_PASSWORD_URL, values)
         .then((response) => {
           resetForm();
-          alert.success("Hasło zmienione pomyślnie");
+          alertSuccess("Hasło zmienione pomyślnie");
         });
     } catch (err) {
-      setFormErrors(err, setErrors, alert.danger);
+      setFormErrors(err, setErrors, alertDanger);
     } finally {
       setSubmitting(false);
     }

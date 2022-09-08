@@ -60,7 +60,7 @@ const initialValues = {
 
 const AddProduct = () => {
   const axiosPrivate = useAxiosPrivate();
-  const alert = useAlert();
+  const { alertDanger, alertSuccess } = useAlert();
   const setFormErrors = useFormErrorHandler();
 
   const handleFormSubmit = async (
@@ -73,12 +73,12 @@ const AddProduct = () => {
         .post(ENDPOINTS.PRODUCTS_URL, values)
         .then((response) => {
           resetForm();
-          alert.success(
+          alertSuccess(
             "Produkt pojawi się w bazie po zweryfikowaniu przez administratora"
           );
         });
     } catch (err) {
-      setFormErrors(err, setErrors, alert.danger);
+      setFormErrors(err, setErrors, alertDanger);
     } finally {
       setSubmitting(false);
     }

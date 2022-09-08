@@ -16,7 +16,7 @@ const initialValues = { email: "" };
 const RequestPasswordReset = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const { resetPasswordRequest } = useAuth();
-  const alert = useAlert();
+  const { alertDanger } = useAlert();
   const setFormErrors = useFormErrorHandler();
 
   const handleFormSubmit = async (
@@ -30,7 +30,7 @@ const RequestPasswordReset = () => {
         setIsSuccess(true);
       });
     } catch (err) {
-      setFormErrors(err, setErrors, alert.danger);
+      setFormErrors(err, setErrors, alertDanger);
     } finally {
       setSubmitting(false);
     }

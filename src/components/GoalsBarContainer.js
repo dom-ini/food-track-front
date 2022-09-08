@@ -14,7 +14,7 @@ const GoalsBarContainer = ({ date, macrosEaten }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [goals, setGoals] = useState({});
   const axiosPrivate = useAxiosPrivate();
-  const alert = useAlert();
+  const { alertDanger } = useAlert();
 
   useEffect(() => {
     let isMounted = true;
@@ -37,7 +37,7 @@ const GoalsBarContainer = ({ date, macrosEaten }) => {
         setGoals(goals);
       } catch (err) {
         if (err.name !== "CanceledError")
-          alert.danger("Wystąpił błąd, spróbuj ponownie później");
+          alertDanger("Wystąpił błąd, spróbuj ponownie później");
       } finally {
         setIsLoading(false);
       }
@@ -49,7 +49,7 @@ const GoalsBarContainer = ({ date, macrosEaten }) => {
       isMounted = false;
       controller.abort();
     };
-  }, [axiosPrivate, date]);
+  }, [axiosPrivate, date, alertDanger]);
 
   const transformGoalsToAbsolute = (data) => {
     const kcal = data.daily_kcal_goal;

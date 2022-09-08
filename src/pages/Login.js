@@ -18,7 +18,7 @@ const Login = () => {
   const { login, facebookLogin, googleLogin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const alert = useAlert();
+  const { alertDanger } = useAlert();
   const setFormErrors = useFormErrorHandler();
   const returnURL = location.state?.from?.pathname || "/";
 
@@ -46,7 +46,7 @@ const Login = () => {
         navigate(returnURL, { replace: true });
       });
     } catch (err) {
-      setFormErrors(err, setErrors, alert.danger);
+      setFormErrors(err, setErrors, alertDanger);
     } finally {
       setSubmitting(false);
     }

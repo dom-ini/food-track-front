@@ -35,7 +35,7 @@ const ProductEntryAddFormContainer = ({
   const [isLoading, setIsLoading] = useState(false);
 
   const axiosPrivate = useAxiosPrivate();
-  const alert = useAlert();
+  const { alertDanger } = useAlert();
   const setFormErrors = useFormErrorHandler();
 
   const handleFormSubmit = async (values, { resetForm, setErrors }) => {
@@ -56,7 +56,7 @@ const ProductEntryAddFormContainer = ({
           setDiaryEntries((prev) => [...prev, newEntry]);
         });
     } catch (err) {
-      setFormErrors(err, setErrors, alert.danger);
+      setFormErrors(err, setErrors, alertDanger);
     } finally {
       resetForm();
       closeModal();
@@ -64,7 +64,7 @@ const ProductEntryAddFormContainer = ({
     }
   };
 
-  return (  
+  return (
     <>
       <MealEntry
         name={product.name}

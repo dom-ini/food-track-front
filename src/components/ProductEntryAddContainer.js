@@ -20,7 +20,7 @@ const ProductEntryAddContainer = ({
   const [isLoading, setIsLoading] = useState(false);
 
   const axiosPrivate = useAxiosPrivate();
-  const alert = useAlert();
+  const { alertDanger } = useAlert();
 
   const getProducts = useCallback(
     async (url, controller) => {
@@ -39,12 +39,12 @@ const ProductEntryAddContainer = ({
       } catch (err) {
         if (err.name !== "CanceledError") {
           setIsLoading(false);
-          alert.danger("Wystąpił błąd, spróbuj ponownie później");
+          alertDanger("Wystąpił błąd, spróbuj ponownie później");
         }
         return [];
       }
     },
-    [axiosPrivate, search]
+    [axiosPrivate, search, alertDanger]
   );
 
   const getNewListOfProducts = useCallback(

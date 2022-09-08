@@ -28,7 +28,7 @@ const initialValues = { email: "", password1: "", password2: "" };
 const Register = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const { register } = useAuth();
-  const alert = useAlert();
+  const { alertDanger } = useAlert();
   const setFormErrors = useFormErrorHandler();
 
   const handleFormSubmit = async (
@@ -42,7 +42,7 @@ const Register = () => {
         setIsSuccess(true);
       });
     } catch (err) {
-      setFormErrors(err, setErrors, alert.danger);
+      setFormErrors(err, setErrors, alertDanger);
     } finally {
       setSubmitting(false);
     }

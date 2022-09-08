@@ -26,7 +26,7 @@ const ResetPassword = () => {
   const { uid, token } = useParams();
   const [isSuccess, setIsSuccess] = useState(false);
   const { resetPassword } = useAuth();
-  const alert = useAlert();
+  const { alertDanger } = useAlert();
   const setFormErrors = useFormErrorHandler();
 
   const handleFormSubmit = async (
@@ -40,11 +40,11 @@ const ResetPassword = () => {
         setIsSuccess(true);
       });
     } catch (err) {
-      setFormErrors(err, setErrors, alert.danger);
+      setFormErrors(err, setErrors, alertDanger);
 
       const errorData = err?.response?.data;
       if (errorData && ("token" in errorData || "uid" in errorData))
-        alert.danger("Link do zmiany hasła jest nieprawidłowy");
+        alertDanger("Link do zmiany hasła jest nieprawidłowy");
     } finally {
       setSubmitting(false);
     }

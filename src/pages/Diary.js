@@ -35,7 +35,7 @@ const Diary = () => {
     createObjectFromTemplate(MACROS_EATEN_TEMPLATE)
   );
   const axiosPrivate = useAxiosPrivate();
-  const alert = useAlert();
+  const { alertDanger } = useAlert();
 
   useEffect(() => {
     setEntriesByMeal(createObjectFromTemplate(ENTRIES_BY_MEAL_TEMPLATE));
@@ -60,7 +60,7 @@ const Diary = () => {
         setDiaryEntries(response.data.results);
       } catch (err) {
         if (err.name !== "CanceledError")
-          alert.danger("Wystąpił błąd, spróbuj ponownie później");
+          alertDanger("Wystąpił błąd, spróbuj ponownie później");
       }
     };
 
@@ -70,7 +70,7 @@ const Diary = () => {
       isMounted = false;
       controller.abort();
     };
-  }, [axiosPrivate, selectedDay]);
+  }, [axiosPrivate, selectedDay, alertDanger]);
 
   useEffect(() => {
     const transformEntriesData = () => {
@@ -132,7 +132,7 @@ const Diary = () => {
         setDiaryEntries(newDiaryEntries);
       }
     } catch (err) {
-      alert.danger("Wystąpił błąd, spróbuj ponownie później");
+      alertDanger("Wystąpił błąd, spróbuj ponownie później");
     }
   };
 

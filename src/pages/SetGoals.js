@@ -54,7 +54,7 @@ const SetGoals = () => {
     JSON.parse(JSON.stringify(EMPTY_GOALS))
   );
   const axiosPrivate = useAxiosPrivate();
-  const alert = useAlert();
+  const { alertDanger, alertSuccess } = useAlert();
   const setFormErrors = useFormErrorHandler();
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const SetGoals = () => {
         setInitialValues(values);
       } catch (err) {
         if (err.name !== "CanceledError")
-          alert.danger("Wystąpił błąd, spróbuj ponownie później");
+          alertDanger("Wystąpił błąd, spróbuj ponownie później");
       } finally {
         setIsLoading(false);
       }
@@ -117,10 +117,10 @@ const SetGoals = () => {
           daily_carb_goal: values.carb_perc,
         })
         .then((response) => {
-          alert.success("Cele zmienione pomyślnie");
+          alertSuccess("Cele zmienione pomyślnie");
         });
     } catch (err) {
-      setFormErrors(err, setErrors, alert.danger);
+      setFormErrors(err, setErrors, alertDanger);
     } finally {
       setSubmitting(false);
     }
