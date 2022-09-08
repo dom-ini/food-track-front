@@ -5,8 +5,6 @@ const SocialLoginContext = createContext();
 /* global FB, google */
 
 export const SocialLoginProvider = ({ children }) => {
-  const [isFacebookReady, setIsFacebookReady] = useState(false);
-
   useEffect(() => {
     initFacebookSdk();
   }, []);
@@ -18,7 +16,6 @@ export const SocialLoginProvider = ({ children }) => {
         version: "v14.0",
       });
     };
-    setIsFacebookReady(true);
   };
 
   const handleFacebookLogin = (onTokenObtain) => {
@@ -52,7 +49,6 @@ export const SocialLoginProvider = ({ children }) => {
   return (
     <SocialLoginContext.Provider
       value={{
-        isFacebookReady,
         handleFacebookLogin,
         handleGoogleLogin,
       }}

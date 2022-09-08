@@ -4,7 +4,7 @@ import SocialLoginButton from "./SocialLoginButton";
 
 import useSocialLogin from "../hooks/useSocialLogin";
 
-const GoogleLogin = ({ onTokenObtain, className }) => {
+const GoogleLogin = ({ onTokenObtain, className, disabled }) => {
   const { handleGoogleLogin } = useSocialLogin();
 
   return (
@@ -14,6 +14,7 @@ const GoogleLogin = ({ onTokenObtain, className }) => {
       variant="google"
       text="Zaloguj przez Google"
       icon={<FaGoogle className="me-3" />}
+      disabled={disabled}
     />
   );
 };

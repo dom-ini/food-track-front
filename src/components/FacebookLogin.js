@@ -4,8 +4,8 @@ import SocialLoginButton from "./SocialLoginButton";
 
 import useSocialLogin from "../hooks/useSocialLogin";
 
-const FacebookLogin = ({ onTokenObtain, className }) => {
-  const { handleFacebookLogin, isFacebookReady } = useSocialLogin();
+const FacebookLogin = ({ onTokenObtain, className, disabled }) => {
+  const { handleFacebookLogin } = useSocialLogin();
 
   return (
     <SocialLoginButton
@@ -14,7 +14,7 @@ const FacebookLogin = ({ onTokenObtain, className }) => {
       variant="facebook"
       text="Zaloguj przez Facebook"
       icon={<FaFacebookF className="me-3" />}
-      disabled={!isFacebookReady}
+      disabled={disabled}
     />
   );
 };
