@@ -25,6 +25,7 @@ const MealEntriesContainer = ({
             variant="primary"
             className="rounded-circle"
             onClick={() => openModal(mealId)}
+            aria-label={`Dodaj wpis do posiłku: ${mealName}`}
           >
             <GoPlus />
           </Button>
@@ -42,6 +43,7 @@ const MealEntriesContainer = ({
               variant="danger"
               className="rounded-circle"
               onClick={() => deleteEntry(entry.id)}
+              aria-label={`Usuń wpis: ${entry.name}`}
             >
               <GoDash />
             </Button>

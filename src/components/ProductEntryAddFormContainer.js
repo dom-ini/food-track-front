@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import { GoPlus, GoDash } from "react-icons/go";
+import { GoPlus, GoChevronUp } from "react-icons/go";
 import { number, object } from "yup";
 import { format } from "date-fns";
 
@@ -75,8 +75,11 @@ const ProductEntryAddFormContainer = ({
             className="rounded-circle"
             onClick={() => setIsOpen((prev) => !prev)}
             disabled={isLoading}
+            aria-label={`${
+              isOpen ? "Zwiń" : "Rozwiń"
+            } formularz dodawania wpisu`}
           >
-            {isOpen ? <GoDash /> : <GoPlus />}
+            {isOpen ? <GoChevronUp /> : <GoPlus />}
           </Button>
         }
       />

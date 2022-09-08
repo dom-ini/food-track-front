@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Button } from "react-bootstrap";
-import { isEqual, isToday } from "date-fns";
+import { format, isEqual, isToday } from "date-fns";
 import Calendar from "react-calendar";
 
 import useOutsideClick from "../hooks/useOutsideClick";
@@ -34,6 +34,7 @@ const DiaryDatePicker = ({
                 variant="primary"
                 className="rounded-circle"
                 onClick={leftBtnAction}
+                aria-label="Pokaż wcześniejsze daty"
               >
                 &#8249;
               </Button>
@@ -49,6 +50,7 @@ const DiaryDatePicker = ({
                   className="rounded-circle"
                   key={i}
                   onClick={() => handleDayPick(date)}
+                  aria-label={`Wybierz dzień ${format(date, 'yyyy-MM-dd')}`}
                 >
                   {date.getDate()}
                 </Button>
@@ -57,6 +59,7 @@ const DiaryDatePicker = ({
                 variant="primary"
                 className="rounded-circle"
                 onClick={rightBtnAction}
+                aria-label="Pokaż późniejsze daty"
               >
                 &#8250;
               </Button>
