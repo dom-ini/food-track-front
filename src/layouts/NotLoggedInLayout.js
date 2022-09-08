@@ -14,7 +14,7 @@ const NotLoggedInLayout = () => {
       <Row className="box-wrapper mx-auto">
         <Col xs={12} className="dynamic-content">
           <Link to="/logowanie">
-            <Logo height="100" className="d-block mx-auto mb-3" />
+            <Logo height="100" width="212" className="d-block mx-auto mb-3" />
           </Link>
           <TransitionGroup>
             <CSSTransition
