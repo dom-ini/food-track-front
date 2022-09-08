@@ -49,6 +49,7 @@ const GoalProgress = ({
           className={
             variant === "danger" ? `progress-exceed-${barColor}` : null
           }
+          title={`Dzisiejsze spożycie: ${label}`}
         />
       )}
     </div>
