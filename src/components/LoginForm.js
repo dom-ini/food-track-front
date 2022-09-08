@@ -61,7 +61,7 @@ const LoginForm = ({
               isInvalid={touched.password && errors?.password}
               errors={errors?.password}
             />
-            <Link to="/resetuj-haslo" className="d-block mb-2 link-primary">
+            <Link to="/resetuj-haslo" className="d-block my-3 link-primary">
               Zapomniałem hasła
             </Link>
             <Button
@@ -80,7 +80,7 @@ const LoginForm = ({
             </Link>
             <Link
               to="/aktywuj-konto/wyslij-link"
-              className="d-block mt-2 link-primary"
+              className="d-block mt-3 link-primary"
             >
               Wyślij ponownie link aktywacyjny
             </Link>
