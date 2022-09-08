@@ -1,6 +1,6 @@
 import { Image } from "react-bootstrap";
 
-import logo from "../assets/img/logo-big.png";
+import logo from "../assets/img/logo-big.webp";
 
 const Logo = ({ height, width, className }) => {
   return (

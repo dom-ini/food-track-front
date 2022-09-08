@@ -3,7 +3,7 @@ import { Button, Container, Row, Col, Image } from "react-bootstrap";
 
 import useAuth from "../hooks/useAuth";
 
-import missingImg from "../assets/img/404.png";
+import missingImg from "../assets/img/404.webp";
 import "../styles/layouts/Missing404.scss";
 
 const Missing404 = () => {
