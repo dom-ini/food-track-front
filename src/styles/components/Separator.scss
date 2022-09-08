@@ -1,12 +1,12 @@
 .separator {
-  color: gray;
+  color: #696969;
   font-size: 0.9rem;
 
   &::before,
   &::after {
     content: "";
     flex: 1;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #696969;
   }
 
   &:not(:empty)::before {
