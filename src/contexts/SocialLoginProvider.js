@@ -17,8 +17,8 @@ export const SocialLoginProvider = ({ children }) => {
         appId: process.env.REACT_APP_FACEBOOK_APP_ID,
         version: "v14.0",
       });
-      setIsFacebookReady(true);
     };
+    setIsFacebookReady(true);
   };
 
   const handleFacebookLogin = (onTokenObtain) => {
