@@ -4,11 +4,21 @@ import { GoPlus, GoDash } from "react-icons/go";
 import MealEntry from "./MealEntry";
 
 import useDiary from "../hooks/useDiary";
+import useAlert from "../hooks/useAlert";
 
 import "../styles/components/MealEntriesContainer.scss";
 
 const MealEntriesContainer = ({ mealName, mealId, openModal }) => {
   const { entriesByMeal, macrosByMeal, deleteEntry } = useDiary();
+  const { alertDanger } = useAlert();
+
+  const handleEntryDelete = async (entryId) => {
+    try {
+      await deleteEntry(entryId);
+    } catch (err) {
+      alertDanger("Wystąpił błąd, spróbuj ponownie później");
+    }
+  };
 
   return (
     <div className="meal-container">
@@ -39,7 +49,7 @@ const MealEntriesContainer = ({ mealName, mealId, openModal }) => {
             <Button
               variant="danger"
               className="rounded-circle"
-              onClick={() => deleteEntry(entry.id)}
+              onClick={() => handleEntryDelete(entry.id)}
               aria-label={`Usuń wpis: ${entry.name}`}
             >
               <GoDash />

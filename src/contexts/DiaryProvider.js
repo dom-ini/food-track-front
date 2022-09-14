@@ -118,19 +118,22 @@ export const DiaryProvider = ({ children }) => {
   }, [diaryEntries]);
 
   const deleteEntry = async (entryId) => {
-    try {
-      const response = await axiosPrivate.delete(
-        ENDPOINTS.DIARY_ENTRIES_URL + entryId
-      );
-      if (response.status === 204) {
-        const newDiaryEntries = diaryEntries.filter(
-          (item) => item.id !== entryId
-        );
-        setDiaryEntries(newDiaryEntries);
-      }
-    } catch (err) {
-      alertDanger("Wystąpił błąd, spróbuj ponownie później");
-    }
+    const response = await axiosPrivate.delete(
+      ENDPOINTS.DIARY_ENTRIES_URL + entryId
+    );
+    if (response.status !== 204) return;
+    const newDiaryEntries = diaryEntries.filter((item) => item.id !== entryId);
+    setDiaryEntries(newDiaryEntries);
+  };
+
+  const addEntry = async (payload) => {
+    const response = await axiosPrivate.post(
+      ENDPOINTS.DIARY_ENTRIES_URL,
+      payload
+    );
+    const newEntry = response?.data;
+    if (!newEntry) return;
+    setDiaryEntries((prev) => [...prev, newEntry]);
   };
 
   return (
@@ -140,11 +143,11 @@ export const DiaryProvider = ({ children }) => {
         setSelectedMeal,
         selectedDay,
         setSelectedDay,
-        setDiaryEntries,
         entriesByMeal,
         macrosByMeal,
         macrosEaten,
         deleteEntry,
+        addEntry,
       }}
     >
       {children}

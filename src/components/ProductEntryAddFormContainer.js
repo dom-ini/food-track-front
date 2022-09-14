@@ -8,11 +8,8 @@ import ProductEntryAddForm from "./ProductEntryAddForm";
 import MealEntry from "./MealEntry";
 
 import useAlert from "../hooks/useAlert";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useFormErrorHandler from "../hooks/useFormErrorHandler";
 import useDiary from "../hooks/useDiary";
-
-import ENDPOINTS from "../globals/endpoints";
 
 const validationSchema = object().shape({
   weight: number()
@@ -29,28 +26,21 @@ const ProductEntryAddFormContainer = ({ product, closeModal }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const axiosPrivate = useAxiosPrivate();
   const { alertDanger } = useAlert();
   const setFormErrors = useFormErrorHandler();
-  const { selectedDay, selectedMeal, setDiaryEntries } = useDiary();
+  const { selectedDay, selectedMeal, addEntry } = useDiary();
 
   const handleFormSubmit = async (values, { resetForm, setErrors }) => {
     try {
       setIsLoading(true);
-      await axiosPrivate
-        .post(ENDPOINTS.DIARY_ENTRIES_URL, {
-          product_entry: {
-            product: product.id,
-            weight: values.weight,
-          },
-          meal: selectedMeal,
-          date: format(selectedDay, "yyyy-MM-dd"),
-        })
-        .then((response) => {
-          const newEntry = response?.data;
-          if (!newEntry) return;
-          setDiaryEntries((prev) => [...prev, newEntry]);
-        });
+      await addEntry({
+        product_entry: {
+          product: product.id,
+          weight: values.weight,
+        },
+        meal: selectedMeal,
+        date: format(selectedDay, "yyyy-MM-dd"),
+      });
     } catch (err) {
       setFormErrors(err, setErrors, alertDanger);
     } finally {
