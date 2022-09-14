@@ -23,24 +23,24 @@ const socialMediaScriptsConfigs = [
 
 export const SocialLoginProvider = ({ children }) => {
   useEffect(() => {
+    const initFacebookSdk = () => {
+      window.fbAsyncInit = () => {
+        FB.init({
+          appId: process.env.REACT_APP_FACEBOOK_APP_ID,
+          version: "v14.0",
+        });
+      };
+    };
+
+    const appendSocialLoginScriptsToHead = () => {
+      for (let scriptConfig of socialMediaScriptsConfigs) {
+        appendScriptToHead(scriptConfig);
+      }
+    };
+
     initFacebookSdk();
     appendSocialLoginScriptsToHead();
   }, []);
-
-  const initFacebookSdk = () => {
-    window.fbAsyncInit = () => {
-      FB.init({
-        appId: process.env.REACT_APP_FACEBOOK_APP_ID,
-        version: "v14.0",
-      });
-    };
-  };
-
-  const appendSocialLoginScriptsToHead = () => {
-    for (let scriptConfig of socialMediaScriptsConfigs) {
-      appendScriptToHead(scriptConfig);
-    }
-  };
 
   const appendScriptToHead = (tagConfig) => {
     if (document.getElementById(tagConfig.id)) return;
