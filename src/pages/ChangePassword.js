@@ -40,12 +40,9 @@ const ChangePassword = () => {
   ) => {
     try {
       setSubmitting(true);
-      await axiosPrivate
-        .post(ENDPOINTS.CHANGE_PASSWORD_URL, values)
-        .then((response) => {
-          resetForm();
-          alertSuccess("Hasło zmienione pomyślnie");
-        });
+      await axiosPrivate.post(ENDPOINTS.CHANGE_PASSWORD_URL, values);
+      resetForm();
+      alertSuccess("Hasło zmienione pomyślnie");
     } catch (err) {
       setFormErrors(err, setErrors, alertDanger);
     } finally {

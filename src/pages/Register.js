@@ -37,10 +37,9 @@ const Register = () => {
   ) => {
     try {
       setSubmitting(true);
-      await register(values).then(() => {
-        resetForm();
-        setIsSuccess(true);
-      });
+      await register(values);
+      resetForm();
+      setIsSuccess(true);
     } catch (err) {
       setFormErrors(err, setErrors, alertDanger);
     } finally {

@@ -69,14 +69,11 @@ const AddProduct = () => {
   ) => {
     try {
       setSubmitting(true);
-      await axiosPrivate
-        .post(ENDPOINTS.PRODUCTS_URL, values)
-        .then((response) => {
-          resetForm();
-          alertSuccess(
-            "Produkt pojawi się w bazie po zweryfikowaniu przez administratora"
-          );
-        });
+      await axiosPrivate.post(ENDPOINTS.PRODUCTS_URL, values);
+      resetForm();
+      alertSuccess(
+        "Produkt pojawi się w bazie po zweryfikowaniu przez administratora"
+      );
     } catch (err) {
       setFormErrors(err, setErrors, alertDanger);
     } finally {

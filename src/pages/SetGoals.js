@@ -109,16 +109,13 @@ const SetGoals = () => {
   ) => {
     try {
       setSubmitting(true);
-      await axiosPrivate
-        .post(ENDPOINTS.GOALS_URL, {
-          daily_kcal_goal: values.daily_kcal_goal,
-          daily_protein_goal: values.protein_perc,
-          daily_fat_goal: values.fat_perc,
-          daily_carb_goal: values.carb_perc,
-        })
-        .then((response) => {
-          alertSuccess("Cele zmienione pomyślnie");
-        });
+      await axiosPrivate.post(ENDPOINTS.GOALS_URL, {
+        daily_kcal_goal: values.daily_kcal_goal,
+        daily_protein_goal: values.protein_perc,
+        daily_fat_goal: values.fat_perc,
+        daily_carb_goal: values.carb_perc,
+      });
+      alertSuccess("Cele zmienione pomyślnie");
     } catch (err) {
       setFormErrors(err, setErrors, alertDanger);
     } finally {

@@ -14,9 +14,8 @@ const ConfirmEmail = () => {
   useEffect(() => {
     const sendVerificationKey = async () => {
       try {
-        await verifyEmail({ key }).then(() => {
-          setIsSuccess(true);
-        });
+        await verifyEmail({ key });
+        setIsSuccess(true);
       } catch (err) {
         setIsSuccess(false);
       } finally {

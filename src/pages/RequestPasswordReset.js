@@ -25,10 +25,9 @@ const RequestPasswordReset = () => {
   ) => {
     try {
       setSubmitting(true);
-      await resetPasswordRequest(values).then(() => {
-        resetForm();
-        setIsSuccess(true);
-      });
+      await resetPasswordRequest(values);
+      resetForm();
+      setIsSuccess(true);
     } catch (err) {
       setFormErrors(err, setErrors, alertDanger);
     } finally {

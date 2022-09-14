@@ -25,10 +25,9 @@ const ResendVerificationEmail = () => {
   ) => {
     try {
       setSubmitting(true);
-      await resendVerificationEmail(values).then(() => {
-        resetForm();
-        setIsSuccess(true);
-      });
+      await resendVerificationEmail(values);
+      resetForm();
+      setIsSuccess(true);
     } catch (err) {
       setFormErrors(err, setErrors, alert.danger);
     } finally {

@@ -41,10 +41,9 @@ const Login = () => {
   ) => {
     try {
       setSubmitting(true);
-      await loginCallback(values).then(() => {
-        resetForm();
-        navigate(returnURL, { replace: true });
-      });
+      await loginCallback(values);
+      resetForm();
+      navigate(returnURL, { replace: true });
     } catch (err) {
       setFormErrors(err, setErrors, alertDanger);
     } finally {
