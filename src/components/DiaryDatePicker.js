@@ -50,7 +50,7 @@ const DiaryDatePicker = ({
                   className="rounded-circle"
                   key={i}
                   onClick={() => handleDayPick(date)}
-                  aria-label={`Wybierz dzień ${format(date, 'yyyy-MM-dd')}`}
+                  aria-label={`Wybierz dzień ${format(date, "yyyy-MM-dd")}`}
                 >
                   {date.getDate()}
                 </Button>
@@ -67,13 +67,14 @@ const DiaryDatePicker = ({
           </>
         )}
       </div>
-      <Calendar
-        minDetail="year"
-        onClickDay={handleCalendarDayPick}
-        className={isCalendarVisible ? null : "d-none"}
-        value={selectedDay}
-        inputRef={calendarRef}
-      />
+      {isCalendarVisible && (
+        <Calendar
+          minDetail="year"
+          onClickDay={handleCalendarDayPick}
+          value={selectedDay}
+          inputRef={calendarRef}
+        />
+      )}
     </>
   );
 };
