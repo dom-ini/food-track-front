@@ -101,7 +101,7 @@ const SetGoals = () => {
       isMounted = false;
       controller.abort();
     };
-  }, [axiosPrivate]);
+  }, [axiosPrivate, alertDanger]);
 
   const handleFormSubmit = async (
     values,
