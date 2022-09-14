@@ -4,9 +4,27 @@ const SocialLoginContext = createContext();
 
 /* global FB, google */
 
+const socialMediaScriptsConfigs = [
+  {
+    id: "facebook-jssdk",
+    src: "https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v14.0",
+    nonce: "v5K8akxY",
+    crossorigin: "anonymous",
+    async: true,
+    defer: true,
+  },
+  {
+    id: "google-client",
+    src: "https://accounts.google.com/gsi/client",
+    async: true,
+    defer: true,
+  },
+];
+
 export const SocialLoginProvider = ({ children }) => {
   useEffect(() => {
     initFacebookSdk();
+    appendSocialLoginScriptsToHead();
   }, []);
 
   const initFacebookSdk = () => {
@@ -16,6 +34,18 @@ export const SocialLoginProvider = ({ children }) => {
         version: "v14.0",
       });
     };
+  };
+
+  const appendSocialLoginScriptsToHead = () => {
+    for (let scriptConfig of socialMediaScriptsConfigs) {
+      appendScriptToHead(scriptConfig);
+    }
+  };
+
+  const appendScriptToHead = (tagConfig) => {
+    if (document.getElementById(tagConfig.id)) return;
+    let script = Object.assign(document.createElement("script"), tagConfig);
+    document.head.appendChild(script);
   };
 
   const handleFacebookLogin = (onTokenObtain) => {
