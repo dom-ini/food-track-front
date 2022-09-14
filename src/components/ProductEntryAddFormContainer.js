@@ -28,7 +28,7 @@ const ProductEntryAddFormContainer = ({ product, closeModal }) => {
 
   const { alertDanger } = useAlert();
   const setFormErrors = useFormErrorHandler();
-  const { selectedDay, selectedMeal, addEntry } = useDiary();
+  const { state, addEntry } = useDiary();
 
   const handleFormSubmit = async (values, { resetForm, setErrors }) => {
     try {
@@ -38,8 +38,8 @@ const ProductEntryAddFormContainer = ({ product, closeModal }) => {
           product: product.id,
           weight: values.weight,
         },
-        meal: selectedMeal,
-        date: format(selectedDay, "yyyy-MM-dd"),
+        meal: state.selectedMeal,
+        date: format(state.selectedDay, "yyyy-MM-dd"),
       });
     } catch (err) {
       setFormErrors(err, setErrors, alertDanger);

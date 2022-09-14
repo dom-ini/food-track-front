@@ -9,7 +9,7 @@ import useAlert from "../hooks/useAlert";
 import "../styles/components/MealEntriesContainer.scss";
 
 const MealEntriesContainer = ({ mealName, mealId, openModal }) => {
-  const { entriesByMeal, macrosByMeal, deleteEntry } = useDiary();
+  const { state, deleteEntry } = useDiary();
   const { alertDanger } = useAlert();
 
   const handleEntryDelete = async (entryId) => {
@@ -25,7 +25,7 @@ const MealEntriesContainer = ({ mealName, mealId, openModal }) => {
       <MealEntry
         className="shadow-sm"
         name={mealName}
-        data={macrosByMeal[mealId]}
+        data={state.macrosByMeal[mealId]}
         variant="light"
         button={
           <Button
@@ -38,7 +38,7 @@ const MealEntriesContainer = ({ mealName, mealId, openModal }) => {
           </Button>
         }
       />
-      {entriesByMeal[mealId].map((entry, i) => (
+      {state.entriesByMeal[mealId].map((entry, i) => (
         <MealEntry
           key={i}
           className=""

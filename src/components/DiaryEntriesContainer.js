@@ -9,10 +9,10 @@ import { MEALS } from "../globals/constants";
 import "../styles/components/DiaryEntriesContainer.scss";
 
 const DiaryEntriesContainer = ({ setIsModalVisible }) => {
-  const { setSelectedMeal } = useDiary();
+  const { dispatch } = useDiary();
 
   const openModalAndSelectMeal = (mealId) => {
-    setSelectedMeal(mealId);
+    dispatch({ type: "set-meal", payload: mealId });
     setIsModalVisible(true);
   };
 

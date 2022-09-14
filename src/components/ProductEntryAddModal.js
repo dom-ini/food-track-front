@@ -9,7 +9,7 @@ import useDiary from "../hooks/useDiary";
 import { MEALS, DATE_LOCALE as LOCALE } from "../globals/constants";
 
 const ProductEntryAddModal = ({ isModalVisible, closeModal }) => {
-  const { selectedMeal, selectedDay } = useDiary();
+  const { state } = useDiary();
 
   return (
     <Modal
@@ -20,8 +20,8 @@ const ProductEntryAddModal = ({ isModalVisible, closeModal }) => {
     >
       <Modal.Header closeButton>
         <Modal.Title>
-          Dodaj wpis do dziennika - {MEALS[selectedMeal]},{" "}
-          {format(selectedDay, "d. MMMM", { locale: LOCALE })}
+          Dodaj wpis do dziennika - {MEALS[state.selectedMeal]},{" "}
+          {format(state.selectedDay, "d. MMMM", { locale: LOCALE })}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
