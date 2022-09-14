@@ -9,11 +9,8 @@ import "../styles/components/ProductEntryAdd.scss";
 const ProductEntryAdd = ({
   products,
   next,
-  date,
-  meal,
   isLoading,
   closeModal,
-  setDiaryEntries,
   appendToListOfProducts,
 }) => {
   const { isScreenSmall } = useWindowSize();
@@ -32,10 +29,7 @@ const ProductEntryAdd = ({
         products.map((product, i) => (
           <ProductEntryAddFormContainer
             product={product}
-            date={date}
-            meal={meal}
             closeModal={closeModal}
-            setDiaryEntries={setDiaryEntries}
             key={i}
           />
         ))

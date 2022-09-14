@@ -2,11 +2,20 @@ import { Row, Col } from "react-bootstrap";
 
 import MealEntriesContainer from "./MealEntriesContainer";
 
+import useDiary from "../hooks/useDiary";
+
 import { MEALS } from "../globals/constants";
 
 import "../styles/components/DiaryEntriesContainer.scss";
 
-const DiaryEntriesContainer = ({ entries, mealMacros, deleteEntry, openModal }) => {
+const DiaryEntriesContainer = ({ setIsModalVisible }) => {
+  const { setSelectedMeal } = useDiary();
+
+  const openModalAndSelectMeal = (mealId) => {
+    setSelectedMeal(mealId);
+    setIsModalVisible(true);
+  };
+
   return (
     <div className="diary-entries-container mx-auto">
       <Row className="macros-labels text-center">
@@ -25,10 +34,7 @@ const DiaryEntriesContainer = ({ entries, mealMacros, deleteEntry, openModal }) 
           key={i}
           mealName={meal}
           mealId={i}
-          mealEntries={entries[i]}
-          mealMacros={mealMacros[i]}
-          deleteEntry={deleteEntry}
-          openModal={openModal}
+          openModal={openModalAndSelectMeal}
         />
       ))}
     </div>

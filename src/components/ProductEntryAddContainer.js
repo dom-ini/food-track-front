@@ -8,12 +8,7 @@ import useAlert from "../hooks/useAlert";
 
 import ENDPOINTS from "../globals/endpoints";
 
-const ProductEntryAddContainer = ({
-  date,
-  meal,
-  closeModal,
-  setDiaryEntries,
-}) => {
+const ProductEntryAddContainer = ({ closeModal }) => {
   const [products, setProducts] = useState([]);
   const [next, setNext] = useState(null);
   const [search, setSearch] = useState("");
@@ -83,11 +78,8 @@ const ProductEntryAddContainer = ({
       <ProductEntryAdd
         products={products}
         next={next}
-        date={date}
-        meal={meal}
         isLoading={isLoading}
         closeModal={closeModal}
-        setDiaryEntries={setDiaryEntries}
         appendToListOfProducts={appendToListOfProducts}
       />
     </>

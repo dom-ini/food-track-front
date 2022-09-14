@@ -3,22 +3,19 @@ import { GoPlus, GoDash } from "react-icons/go";
 
 import MealEntry from "./MealEntry";
 
+import useDiary from "../hooks/useDiary";
+
 import "../styles/components/MealEntriesContainer.scss";
 
-const MealEntriesContainer = ({
-  mealName,
-  mealId,
-  mealEntries,
-  mealMacros,
-  deleteEntry,
-  openModal,
-}) => {
+const MealEntriesContainer = ({ mealName, mealId, openModal }) => {
+  const { entriesByMeal, macrosByMeal, deleteEntry } = useDiary();
+
   return (
     <div className="meal-container">
       <MealEntry
         className="shadow-sm"
         name={mealName}
-        data={mealMacros}
+        data={macrosByMeal[mealId]}
         variant="light"
         button={
           <Button
@@ -31,7 +28,7 @@ const MealEntriesContainer = ({
           </Button>
         }
       />
-      {mealEntries.map((entry, i) => (
+      {entriesByMeal[mealId].map((entry, i) => (
         <MealEntry
           key={i}
           className=""

@@ -5,16 +5,18 @@ import GoalsBar from "./GoalsBar";
 
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAlert from "../hooks/useAlert";
+import useDiary from "../hooks/useDiary";
 
 import { calculateMacro } from "../utils/utils";
 import { MACRO_TO_KCAL } from "../globals/constants";
 import ENDPOINTS from "../globals/endpoints";
 
-const GoalsBarContainer = ({ date, macrosEaten }) => {
+const GoalsBarContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [goals, setGoals] = useState({});
   const axiosPrivate = useAxiosPrivate();
   const { alertDanger } = useAlert();
+  const { selectedDay, macrosEaten } = useDiary();
 
   useEffect(() => {
     let isMounted = true;
@@ -43,13 +45,13 @@ const GoalsBarContainer = ({ date, macrosEaten }) => {
       }
     };
 
-    getGoalsByDate(date);
+    getGoalsByDate(selectedDay);
 
     return () => {
       isMounted = false;
       controller.abort();
     };
-  }, [axiosPrivate, date, alertDanger]);
+  }, [axiosPrivate, selectedDay, alertDanger]);
 
   const transformGoalsToAbsolute = (data) => {
     const kcal = data.daily_kcal_goal;

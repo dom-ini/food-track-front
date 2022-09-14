@@ -8,21 +8,17 @@ import { SMALL_SCREEN_BREAKPOINT } from "../globals/constants";
 import "../styles/components/GoalsBar.scss";
 
 const MACROS = {
-    kcal: { label: "kcal", color: "green" },
-    protein: { label: "białko", color: "orange" },
-    carb: {
-      label:
-        window.innerWidth < SMALL_SCREEN_BREAKPOINT ? "węgl." : "węglowodany",
-      color: "blue",
-    },
-    fat: { label: "tłuszcze", color: "brown" },
-  };
+  kcal: { label: "kcal", color: "green" },
+  protein: { label: "białko", color: "orange" },
+  carb: {
+    label:
+      window.innerWidth < SMALL_SCREEN_BREAKPOINT ? "węgl." : "węglowodany",
+    color: "blue",
+  },
+  fat: { label: "tłuszcze", color: "brown" },
+};
 
-const GoalsBar = ({
-    isLoading,
-    macrosEaten,
-    goals,
-}) => {
+const GoalsBar = ({ isLoading, macrosEaten, goals }) => {
   return (
     <div className="goals-container mx-auto shadow">
       <CSSTransition classNames="fade" timeout={400} in={isLoading}>

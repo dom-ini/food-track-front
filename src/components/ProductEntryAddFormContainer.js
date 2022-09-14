@@ -10,6 +10,7 @@ import MealEntry from "./MealEntry";
 import useAlert from "../hooks/useAlert";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useFormErrorHandler from "../hooks/useFormErrorHandler";
+import useDiary from "../hooks/useDiary";
 
 import ENDPOINTS from "../globals/endpoints";
 
@@ -24,19 +25,14 @@ const validationSchema = object().shape({
 
 const initialValues = { weight: 0, kcal: 0, protein: 0, carb: 0, fat: 0 };
 
-const ProductEntryAddFormContainer = ({
-  product,
-  date,
-  meal,
-  closeModal,
-  setDiaryEntries,
-}) => {
+const ProductEntryAddFormContainer = ({ product, closeModal }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const axiosPrivate = useAxiosPrivate();
   const { alertDanger } = useAlert();
   const setFormErrors = useFormErrorHandler();
+  const { selectedDay, selectedMeal, setDiaryEntries } = useDiary();
 
   const handleFormSubmit = async (values, { resetForm, setErrors }) => {
     try {
@@ -47,8 +43,8 @@ const ProductEntryAddFormContainer = ({
             product: product.id,
             weight: values.weight,
           },
-          meal: meal,
-          date: format(date, "yyyy-MM-dd"),
+          meal: selectedMeal,
+          date: format(selectedDay, "yyyy-MM-dd"),
         })
         .then((response) => {
           const newEntry = response?.data;

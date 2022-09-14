@@ -3,6 +3,8 @@ import { add, sub, eachDayOfInterval, isEqual, format } from "date-fns";
 
 import DiaryDatePicker from "./DiaryDatePicker";
 
+import useDiary from "../hooks/useDiary";
+
 import {
   SMALL_SCREEN_BREAKPOINT,
   DATE_LOCALE as LOCALE,
@@ -10,9 +12,10 @@ import {
 
 const VISIBLE_DAYS = window.innerWidth < SMALL_SCREEN_BREAKPOINT ? 5 : 7;
 
-const DiaryDatePickerContainer = ({ selectedDay, setSelectedDay }) => {
+const DiaryDatePickerContainer = () => {
   const [visibleDays, setVisibleDays] = useState([]);
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+  const { selectedDay, setSelectedDay } = useDiary();
 
   const updateVisibleDays = (initialDate) => {
     const datesRange = eachDayOfInterval({
