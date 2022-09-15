@@ -4,9 +4,9 @@
 
 ## Opis projektu
 
-Food Track to internetowy dziennik żywieniowy. Za jego pomocą możesz:
-- dodawać zjedzone produkty w wybranym dniu i w ramach wybranego posiłku,
-- dodawać nowe produkty do bazy danych (wymaga to każdorazowego zatwierdzenia przez administatora),
+Food Track to internetowy dziennik żywieniowy. Funkcjonalności obejmują:
+- dodawanie zjedzonych produktów w wybranym dniu i w ramach wybranego posiłku,
+- dodawanie nowych produktów do bazy danych (wymaga to każdorazowego zatwierdzenia przez administatora),
 - automatyczne zliczanie zjedzonych kalorii oraz makroskładników (zarówno dla całego dnia, jak i w ramach każdego posiłku),
 - ustawianie dziennych celów obejmujących kalorie oraz makroskładniki.
 
